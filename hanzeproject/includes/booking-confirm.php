@@ -3,12 +3,23 @@
 	include '../helpers/functions.php';
 	//check if GET has a value
 	if (!empty($_GET["bookingscode"])) {
+		//get de bookingscode from the url
 		$id = htmlspecialchars($_GET["bookingscode"]);
+
+		//make a SELECT statement for the db
 		$sql = "SELECT * FROM booking WHERE bookingID = '$id'";
+
+		//run de SELECT statement on the db
 		$result  = mysqli_query($db, $sql);
+
+		//check if result has rows
 		var_dump($result);
-		if (mysql_num_rows($result) > 0) {
+		if (mysqli_num_rows($result) > 0) {
+
+			//fetch result array
 			$row = mysqli_fetch_assoc($result);
+
+			//get data
 			$city = validate_text($row["city"]); 
 			$arrivalDate = validate_date($row["date_of_arrival"]);
 			$departureDate = validate_date($row["date_of_departure"]);
@@ -19,13 +30,6 @@
 	} else {
 		echo "No bookingscode found";
 	}
-	
-	
-
-
-	
-
-	
 ?>
 
 <html>

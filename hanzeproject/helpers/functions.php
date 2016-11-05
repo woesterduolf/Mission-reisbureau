@@ -15,10 +15,11 @@ function validate_text($text) {
 	return $text;
 }
 
-function validate_date($text) {
-	//check if input text is a date
-	$d = DateTime::createFromFormat('Y-m-d', $text);
-    return $d && $d->format('Y-m-d') === $date;
+function validate_Date($date)
+{
+	$timestamp = strtotime($date);
+	return $timestamp ? $date : null;
+	  
 }
 
  ?>
