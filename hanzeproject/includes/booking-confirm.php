@@ -7,22 +7,31 @@
 		$id = htmlspecialchars($_GET["bookingscode"]);
 
 		//make a SELECT statement for the db
-		$sql = "SELECT * FROM booking WHERE bookingID = '$id'";
+		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city, room.TYPE, room.price, hotel.name FROM booking 
+		JOIN room ON room.BOOKING_bookingID = booking.bookingID
+		JOIN hotel ON hotel.hotelID = room.HOTEL_hotelID
+		WHERE bookingID = '$id'";
 
 		//run de SELECT statement on the db
 		$result  = mysqli_query($db, $sql);
 
 		//check if result has rows
-		var_dump($result);
 		if (mysqli_num_rows($result) > 0) {
 
 			//fetch result array
 			$row = mysqli_fetch_assoc($result);
 
 			//get data
-			$city = validate_text($row["city"]); 
+			$city = format_text($row["city"]); 
 			$arrivalDate = validate_date($row["date_of_arrival"]);
 			$departureDate = validate_date($row["date_of_departure"]);
+			$hotelName = format_text($row["name"]);
+			$roomType = format_text($row["TYPE"]);
+			$roomPrice = format_decimal($row["price"]);
+			//calculate room price roomprice * days
+			$days = get_datediff($arrivalDate, $departureDate);
+			
+
 		}
 		else {
 			echo "no results have been found.";
@@ -67,11 +76,11 @@
 						</tr>
 						<tr>
 							<td>Hotel:</td>
-							<td>***</td>
+							<td><?php echo $hotelName; ?></td>
 						</tr>
 						<tr>
 							<td>Room:</td>
-							<td>***</td>
+							<td><?php echo $roomType; ?></td>
 						</tr>
 						<tr>
 							<td>Hotel costs:</td>
