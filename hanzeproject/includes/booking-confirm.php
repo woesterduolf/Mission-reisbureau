@@ -1,15 +1,31 @@
 <?php
-	//check if GET has a value
-	!empty($_GET["bookingscode"]) ? $id = htmlspecialchars($_GET["bookingscode"]) : echo "No bookingscode found";
 	include '../db/connection.php';
 	include '../helpers/functions.php';
-
-	$sql = "SELECT * FROM booking WHERE bookingID = '$id'";
-	$result  = $db->query($sql);
-
-	if (condition) {
-		# code...
+	//check if GET has a value
+	if (!empty($_GET["bookingscode"])) {
+		$id = htmlspecialchars($_GET["bookingscode"]);
+		$sql = "SELECT * FROM booking WHERE bookingID = '$id'";
+		$result  = mysqli_query($db, $sql);
+		var_dump($result);
+		if (mysql_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			$city = validate_text($row["city"]); 
+			$arrivalDate = validate_date($row["date_of_arrival"]);
+			$departureDate = validate_date($row["date_of_departure"]);
+		}
+		else {
+			echo "no results have been found.";
+		}
+	} else {
+		echo "No bookingscode found";
 	}
+	
+	
+
+
+	
+
+	
 ?>
 
 <html>
@@ -25,7 +41,7 @@
 	
 
 	<div class="container-fluid">
-	<fieldset>Booking <?php $_SESSION["bookingId"] ?></fieldset>
+	<fieldset>Booking <?php echo $id; ?></fieldset>
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<h1>Your booking has been completed!</h1>
@@ -35,15 +51,15 @@
 					<table class="table table-sm table-condensed table-responsive">
 						<tr>
 							<td>Date of arrival:</td>
-							<td>***</td>
+							<td><?php echo $arrivalDate; ?></td>
 						</tr>
 						<tr>
 							<td>Date of departure:</td>
-							<td>***</td>
+							<td><?php echo $departureDate; ?></td>
 						</tr>
 						<tr>
 							<td>City:</td>
-							<td>***</td>
+							<td><?php echo $city; ?></td>
 						</tr>
 						<tr>
 							<td>Hotel:</td>
