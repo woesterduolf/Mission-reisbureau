@@ -7,9 +7,13 @@
 		$id = htmlspecialchars($_GET["bookingscode"]);
 
 		//make a SELECT statement for the db
-		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city, room.TYPE, room.price, hotel.name FROM booking 
+		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city, room.TYPE, room.price, hotel.name, busreservation.price AS busPrice, 
+			flightreservation.price AS flightPrice
+		FROM booking 
 		JOIN room ON room.BOOKING_bookingID = booking.bookingID
 		JOIN hotel ON hotel.hotelID = room.HOTEL_hotelID
+		JOIN flightreservation ON flightreservation.BOOKING_bookingID = booking.bookingID 
+		JOIN busreservation ON busreservation.BOOKING_bookingID = booking.bookingID 
 		WHERE bookingID = '$id'";
 
 		//run de SELECT statement on the db
@@ -28,9 +32,14 @@
 			$hotelName = format_text($row["name"]);
 			$roomType = format_text($row["TYPE"]);
 			$roomPrice = format_decimal($row["price"]);
-			//calculate room price roomprice * days
-			$days = get_datediff($arrivalDate, $departureDate);
+			$busPrice = $row["busPrice"];
+			$flightPrice = $row["flightPrice"];
 			
+			//calculate room price roomprice * days
+			$days = get_daydiff($arrivalDate, $departureDate);
+			$hotelPrice = $roomPrice * $days;
+			$transportationPrice = total_transportcost($busPrice, $flightPrice);
+			$totalPrice = $transportationPrice + $hotelPrice;
 
 		}
 		else {
@@ -40,7 +49,6 @@
 		echo "No bookingscode found";
 	}
 ?>
-
 <html>
 <head>
 	<title>Booking geslaagd!</title>
@@ -50,61 +58,81 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<legend>
-	
-
-	<div class="container-fluid">
-	<fieldset>Booking <?php echo $id; ?></fieldset>
+<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<h1>Your booking has been completed!</h1>
-				<p class="small">Thank you for choosing Ancient Travels</p>
-				<hr>
-				<div class="container">
-					<table class="table table-sm table-condensed table-responsive">
-						<tr>
-							<td>Date of arrival:</td>
-							<td><?php echo $arrivalDate; ?></td>
-						</tr>
-						<tr>
-							<td>Date of departure:</td>
-							<td><?php echo $departureDate; ?></td>
-						</tr>
-						<tr>
-							<td>City:</td>
-							<td><?php echo $city; ?></td>
-						</tr>
-						<tr>
-							<td>Hotel:</td>
-							<td><?php echo $hotelName; ?></td>
-						</tr>
-						<tr>
-							<td>Room:</td>
-							<td><?php echo $roomType; ?></td>
-						</tr>
-						<tr>
-							<td>Hotel costs:</td>
-							<td>***</td>
-						</tr>
-						<tr>
-							<td>Transportation</td>
-							<td>***</td>
-						</tr>
-						<tr>
-							<td>Transportation cost</td>
-							<td>***</td>
-						</tr>
-						<tr class="active">
-							<td>Total:</td>
-							<td>***</td>
-						</tr>
-					</table>
-				</div>
-				
+				<p class="lead">Thank you for choosing Ancient Travels</p>
 			</div>
 		</div>
-		</legend>
+	
+		<table class="table">
+			<tr class="text-center">
+				<td><h3>General data</h3><br>
+				<p>Under you will find your information about date of arrival, date of departure and the city.</p>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Your bookingcode:</td>
+				<td><?php echo $id; ?></td>
+			</tr>
+			<tr>
+				<td>Date of arrival:</td>
+				<td><?php echo $arrivalDate; ?></td>
+			</tr>
+			<tr>
+				<td>Date of departure:</td>					
+				<td><?php echo $departureDate; ?></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><?php echo $city; ?></td>
+			</tr>
+			<tr class="text-center">
+				<td>
+					<h3>Hotel information</h3>
+					<p>Here you will find information about your hotel and room</p>
+				</td>
+			</tr>
+			<tr>
+				<td>Hotel:</td>
+				<td><?php echo $hotelName; ?></td>
+			</tr>
+			<tr>
+				<td>Room:</td>
+				<td><?php echo $roomType; ?></td>
+			</tr>
+			<tr>
+				<td>Room costs:</td>
+				<td><?php echo format_money($roomPrice); ?></td>
+			</tr>
+			<tr class="text-center">
+				<td>
+					<h3>Transport and hotel cost</h3><br>
+					<p>Here you will find information about the transport and hotelcost.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>Total hotel costs:</td>
+				<td><?php echo format_money($hotelPrice); ?></td>
+				
+			</tr>
+			<tr>
+				<td>Transportation</td>
+				<td><?php  ?></td>
+			</tr>
+			<tr>
+				<td>Transportation cost</td>
+				<td><?php echo format_money($transportationPrice); ?></td>
+			</tr>
+			<tr class="active">
+				<td>Total:</td>
+				<td><?php echo format_money($totalPrice); ?></td>
+			</tr>
+		</table>
 	</div>
-
+</div>
 </body>
 </html>

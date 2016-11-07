@@ -15,12 +15,17 @@ function format_text($text) {
 	return $text;
 }
 
-function format_decimal($number) {
-	if (is_float($number)) {
-		//format to decimal
-		number_format($number, 2, ',', '.');
-		return $number;
+function format_decimal($input) {
+	$number = intval($input);
+	if (is_int($number)) {
+		$number = number_format($input, 2);
+		return $number;	
 	}
+}
+
+function format_money($input) {
+	$result = "€ " . format_decimal($input) . ",-";
+	return $result;
 }
 
 function validate_date($date)
@@ -31,12 +36,21 @@ function validate_date($date)
 
 //get de diff between check-in date and the check-out date
 //source: http://stackoverflow.com/questions/2040560/finding-the-number-of-days-between-two-dates
-function get_datediff($checkinDate, $checkoutDate) {
+function get_daydiff($checkinDate, $checkoutDate) {
 	$splitCheckinDate = explode('-', $checkinDate);
 	$splitCheckoutDate = explode('-', $checkoutDate);
-
 	$dayDiff = $splitCheckoutDate[2] - $splitCheckinDate[2];
 	return $dayDiff;
 }
+
+function total_transportcost($buscost, $flightcost) {
+	if (is_numeric($buscost) && is_numeric($flightcost)) {
+		$total = $buscost + $flightcost;
+		return $total;	
+	}
+	return null;
+}
+
+
 
  ?>
