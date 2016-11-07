@@ -1,10 +1,14 @@
 <?php
 	include '../db/connection.php';
 	include '../helpers/functions.php';
-	//check if GET has a value
-	if (!empty($_GET["bookingscode"])) {
-		//get de bookingscode from the url
-		$id = htmlspecialchars($_GET["bookingscode"]);
+	session_start();
+	$_SESSION["bookingscode"] = 2347;
+	$_SESSION["transporttype"] = "By bus and plane";
+	//check if SESSIONS have a value
+	if (!empty($_SESSION["bookingscode"]) && !empty($_SESSION["transporttype"])) {
+		//get de bookingscode from the session
+		$id = $_SESSION["bookingscode"];
+		$transportType = format_text($_SESSION["transporttype"]);
 
 		//make a SELECT statement for the db
 		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city, room.TYPE, room.price, hotel.name, busreservation.price AS busPrice, 
@@ -40,7 +44,6 @@
 			$hotelPrice = $roomPrice * $days;
 			$transportationPrice = total_transportcost($busPrice, $flightPrice);
 			$totalPrice = $transportationPrice + $hotelPrice;
-
 		}
 		else {
 			echo "no results have been found.";
@@ -121,7 +124,7 @@
 			</tr>
 			<tr>
 				<td>Transportation</td>
-				<td><?php  ?></td>
+				<td><?php echo $transportType ?></td>
 			</tr>
 			<tr>
 				<td>Transportation cost</td>
