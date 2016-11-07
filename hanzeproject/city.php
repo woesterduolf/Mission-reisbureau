@@ -37,6 +37,11 @@
             </div>
         </div>
         </header>
+    
+       <div class="col-sm-2">
+        <img class="img-responsive" src="images/ARNAbanner.PNG" style="position: relative; left: -15px; top: -70px"/>
+    </div>  
+    
   
        
         <!-- Page Content -->
