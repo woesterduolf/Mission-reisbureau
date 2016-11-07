@@ -11,15 +11,15 @@
 		$transportType = format_text($_SESSION["transporttype"]);
 
 		//make a SELECT statement for the db
-		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city, room.TYPE, room.price, hotel.name, busreservation.price AS busPrice, 
-			flightreservation.price AS flightPrice
+		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city AS bookingcity, room.TYPE, room.price, hotel.name, busreservation.price AS busPrice, 
+			flightreservation.price AS flightPrice, customer.first_name, customer.last_name, customer.adress, customer.zipcode, customer.city AS customercity, customer.country, customer.phonenumber 
 		FROM booking 
 		JOIN room ON room.BOOKING_bookingID = booking.bookingID
 		JOIN hotel ON hotel.hotelID = room.HOTEL_hotelID
 		JOIN flightreservation ON flightreservation.BOOKING_bookingID = booking.bookingID 
-		JOIN busreservation ON busreservation.BOOKING_bookingID = booking.bookingID 
+		JOIN busreservation ON busreservation.BOOKING_bookingID = booking.bookingID
+		JOIN customer ON booking.CUSTOMER_customer_ID = customer.customer_ID 
 		WHERE bookingID = '$id'";
-
 		//run de SELECT statement on the db
 		$result  = mysqli_query($db, $sql);
 
@@ -30,9 +30,16 @@
 			$row = mysqli_fetch_assoc($result);
 
 			//get data
-			$city = format_text($row["city"]); 
+			$city = format_text($row["bookingcity"]); 
 			$arrivalDate = validate_date($row["date_of_arrival"]);
 			$departureDate = validate_date($row["date_of_departure"]);
+			$customerName = format_text($row["first_name"]) . " " . format_text($row["last_name"]);
+			$customerAddress = format_text($row["adress"]);
+			$customerZipcode = format_text($row["zipcode"]);
+			$customerCity = format_text($row["customercity"]);
+			$customerCountry = format_text($row["country"]);
+			$customerPhone = format_text($row["phonenumber"]);
+
 			$hotelName = format_text($row["name"]);
 			$roomType = format_text($row["TYPE"]);
 			$roomPrice = format_decimal($row["price"]);
@@ -54,7 +61,7 @@
 ?>
 <html>
 <head>
-	<title>Booking geslaagd!</title>
+	<title>Booking confirm!</title>
 	<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<script src="../js/jquery.min.js"></script>
 	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -71,7 +78,7 @@
 		</div>
 	
 		<table class="table">
-			<tr class="text-center">
+			<tr>
 				<td><h3>General data</h3><br>
 				<p>Under you will find your information about date of arrival, date of departure and the city.</p>
 				</td>
@@ -80,6 +87,18 @@
 			<tr>
 				<td>Your bookingcode:</td>
 				<td><?php echo $id; ?></td>
+			</tr>
+			<tr>
+				<td>Booked by</td>
+				<td><?php echo $customerName; ?></td>
+			</tr>
+			<tr>
+				<td>Invoice address</td>
+				<td><?php echo $customerAddress . ", " . $customerZipcode . "<br>" . $customerCity . ", " . $customerCountry; ?></td>
+			</tr>
+			<tr>
+				<td>Your phonenumber</td>
+				<td><?php echo $customerPhone; ?></td>
 			</tr>
 			<tr>
 				<td>Date of arrival:</td>
@@ -93,11 +112,12 @@
 				<td>City:</td>
 				<td><?php echo $city; ?></td>
 			</tr>
-			<tr class="text-center">
+			<tr>
 				<td>
 					<h3>Hotel information</h3>
 					<p>Here you will find information about your hotel and room</p>
 				</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>Hotel:</td>
@@ -107,17 +127,18 @@
 				<td>Room:</td>
 				<td><?php echo $roomType; ?></td>
 			</tr>
-			<tr>
+			<tr class="active">
 				<td>Room costs:</td>
 				<td><?php echo format_money($roomPrice); ?></td>
 			</tr>
-			<tr class="text-center">
+			<tr>
 				<td>
 					<h3>Transport and hotel cost</h3><br>
 					<p>Here you will find information about the transport and hotelcost.</p>
 				</td>
+				<td></td>
 			</tr>
-			<tr>
+			<tr class="active">
 				<td>Total hotel costs:</td>
 				<td><?php echo format_money($hotelPrice); ?></td>
 				
@@ -126,7 +147,7 @@
 				<td>Transportation</td>
 				<td><?php echo $transportType ?></td>
 			</tr>
-			<tr>
+			<tr class="active">
 				<td>Transportation cost</td>
 				<td><?php echo format_money($transportationPrice); ?></td>
 			</tr>
