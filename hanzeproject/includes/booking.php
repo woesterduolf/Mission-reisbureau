@@ -177,10 +177,17 @@
 			<tr>
 			
 				<td></td>
-				<td><input type="submit" value="Book now" class="btn btn-success"></td>
+				
 			
 			</tr>
 		</table>
+		<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#creditcard">Creditcard</button>
+		<div id="creditcard" class ="collapse">
+		Dit is een test verhaal
+		</div>
+		<br>
+		<br>
+		<input type="submit" value="Book now" class="btn btn-success">
 		</form>
 	</div>
 </div>
