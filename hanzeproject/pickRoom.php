@@ -51,7 +51,7 @@
 							<div class="col-sm-3">
 								<h4><?php echo $hotelName; ?><!--insert hotel name--></h4>
 								<!--image of the hotel(now it is the logo)-->
-								<img class="img-responsive" src="images/hotelImages/<?php echo str_replace(" ", "", strtolower($hotelName)); ?>">
+								<img class="img-responsive" src="images/hotels/<?php echo str_replace(" ", "", strtolower($hotelName)); ?>">
 								<h4>Facilities:</h4>
 								<ul>
 									<?php
@@ -93,7 +93,7 @@
 															"<p>Price: ".$row["price"]. "</p>".
 														"</div>
 														<div class=\"col-sm-6\">
-															<img class=\"img-responsive\" src=\"images/roomImages/" .strtolower($row["TYPE"]) . "\">
+															<img class=\"img-responsive\" src=\"images/rooms/" .strtolower($row["TYPE"]) . "\">
 														</div>
 														<div class=\"col-sm-3\">
 														<br />
