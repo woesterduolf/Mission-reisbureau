@@ -7,7 +7,6 @@
 	session_start();
 	
 	// filling the session with testdata
-	
 	$_SESSION['city'] = "Athens";
 	$_SESSION['date_of_arrival'] = "2016-11-08";
 	$_SESSION['date_of_departure'] = "2016-11-28";
@@ -15,8 +14,8 @@
 	$_SESSION['room_type'] = "luxe";
 	$_SESSION['room_price'] = 500;
 	$_SESSION['bus_price'] = 20;
-	$_SESSiON['flight_Price'] = 10;
-	$_SESSiON['transport_type'] = "trein";
+	$_SESSION['flight_Price'] = 10;
+	$_SESSION['transport_type'] = "Bus";
 	
 	// Getting data from the session
 	$city = $_SESSION['city'];
@@ -47,9 +46,7 @@
 	<title>Your booking</title>
 	<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<script src="../js/jquery.min.js"></script>
-	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="../css/thumbnail-gallery.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/image-overlay.css">
+	<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -69,9 +66,6 @@
                     <a class="thumbnail">
                         <img class="img-responsive" src="<?php echo $getImageUrl; ?>" alt="<?php echo $city; ?>">
                     </a>
-                    <div class="overlay">
-                        <h2><?php echo $city; ?></h2>
-                    </div>
                 </div>
             </div>
 			<div class="col-md-6">
@@ -124,9 +118,6 @@
                     <a class="thumbnail">
                         <img class="img-responsive" src="<?php echo $standardImage; ?>" alt="<?php echo $hotelName; ?>">
                     </a>
-                    <div class="overlay">
-                        <h2><?php echo $hotelName; ?></h2>
-                    </div>
                 </div>
             </div>
 		</div>
@@ -160,6 +151,12 @@
 			</div>
 		</div>		
 	</div>	
+	<form method="POST" action="#">
+		<div class="form-group">
+			<label for="firstname">First name</label>
+			<input type="firstname" class="form-control" id="mr-firstname">
+		</div>
+	</form>
 	<!-- Input form -->
 		<form method="post" action="">
 		<table class="table">
