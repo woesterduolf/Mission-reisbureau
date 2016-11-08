@@ -46,7 +46,8 @@
 	<title>Your booking</title>
 	<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<script src="../js/jquery.min.js"></script>
-	<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="../js/main.js"></script>
+	<link href="../css/main.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -151,85 +152,107 @@
 			</div>
 		</div>		
 	</div>	
-	<form method="POST" action="#">
-		<div class="form-group">
-			<label for="firstname">First name</label>
-			<input type="firstname" class="form-control" id="mr-firstname">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="text-center">
+					<h3>Your personal information</h3>
+					<p>Fill in your personal infomation to complete the booking.</p>
+					<hr>
+				</div>
+			</div>
 		</div>
-	</form>
-	<!-- Input form -->
-		<form method="post" action="">
-		<table class="table">
-			<tr class="text-center">
-				<td>
-					<h3>Your personal info</h3><br>
-					<p>Fill in your personal info to complete the booking.</p>
-				</td>
-			<tr>
-				<td>First name:</td> 
-				<td><input type="text" name="first_name"></td>
-			</tr>
-			<tr>
-			
-				<td>Last name:</td> 
-				<td><input type="text" name="last_name"></td>
-			</tr>
-			<tr>
-				
-				<td>Telephone number:</td> 
-				<td><input type="text" name="phone_number"></td>
-				
-			</tr>
-			<tr>
-				
-				<td>Adress:</td>
-				<td><input type="text" name="adress"></td>
-			
-			</tr>
-			<tr>
-				
-				<td>Zip code:</td> 
-				<td><input type="text" name="zip_code"></td>
-				
-			</tr>
-			<tr>
-				
-				<td>City:</td> 
-				<td><input type="text" name="city"></td>
-			
-			</tr>
-			<tr>
-				
-				<td>Country:</td> 
-				<td><input type="text" name="country"></td>
-				
-			</tr>
-			<!--  <tr>
-			
-				<td>comment</td>
-				<td><textarea name="comment" rows="5" cols="40"></textarea></td>
-			
-			</tr>
-			-->
-			<tr>
-			</tr>
-			
-			<tr>
-			
-				<td></td>
-				
-			
-			</tr>
-		</table>
-		<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#creditcard">Creditcard</button>
-		<div id="creditcard" class ="collapse">
-		Dit is een test verhaal
-		</div>
-		<br>
-		<br>
-		<input type="submit" value="Book now" class="btn btn-success">
+		<form method="POST" action="#">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="mr-firstname">First name</label>
+						<input type="text" name="firstname" class="form-control" id="mr-firstname" placeholder="Tobias">
+					</div>
+					<div class="form-group">
+						<label for="mr-lastname">Last name</label>
+						<input type="text" name="lastname" class="form-control" id="mr-lastname" placeholder="Schiphorst">
+					</div>
+					<div class="form-group">
+						<label for="mr-phone">Phonenumber</label>
+						<input type="text" name="phonenumber" class="form-control" id="mr-phone" placeholder="065879224">
+					</div>
+					<div class="form-group">
+						<label for="mr-address">Address</label>
+						<input type="text" name="address" class="form-control" id="mr-address" placeholder="Naalrand 19">
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 mr-col-no-padding">
+							<label for="mr-zipcode">Zipcode</label>
+							<input type="text" name="zipcode" size="6" max="6" class="form-control" id="mr-zipcode" placeholder="1797AM">
+						</div>
+					</div>
+					<div class="form-group">
+					 	<div class="col-md-5">
+					 		<label for="mr-city">City</label>
+							<input type="text" name="city" class="form-control" id="mr-city" placeholder="Den Hoorn">
+					 	</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-5 mr-col-no-padding">
+							<label for="mr-country">Country</label>
+							<input type="text" name="country" class="form-control" id="mr-country" placeholder="The Netherlands">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group" id="mr-payment-options-container">
+						<label for="mr-payment">Paymentoptions:</label>
+						<select name="paymentmethode" class="form-control" id="mr-payment">
+						    <option value="ideal" selected>Ideal</option>
+						    <option value="credit">Creditcard</option>
+						    <option value="paypal">Paypal</option>
+						</select>
+						<p>We accept <a href="https://www.ideal.nl" target="_blank">Ideal</a>, Creditcard and <a href="https://www.paypal.com" target="_blank">Paypal</a></p>
+					</div>
+					<div id="mr-ideal-wrapper" hidden="true">
+						<div class="form-group">
+							<label for="mr-ideal">IBAN number</label>
+							<input type="text" name="iban" class="form-control" id="mr-ideal" placeholder="INGB0001234567">
+						</div>
+						<div class="form-group">
+							<label for="mr-cardnumber">Card number</label>
+							<input type="text" name="cardnumber" class="form-control" id="mr-ideal-cardnumber" placeholder="154">
+						</div>
+					</div>
+					<div id="mr-creditcard-wrapper" hidden="true">
+						<div class="form-group">
+							<label for="mr-creditcard">Creditcard</label>
+							<input type="text" name="creditcard" class="form-control" id="mr-creditcard" placeholder="84158541515">
+						</div>
+						<div class="form-group">
+							<label for="mr-creditcard-confirmnumber">Confirmnumber</label>
+							<input type="text" name="confirmnumber" class="form-control" id="mr-creditcard-confirmnumber" placeholder="515">
+						</div>						
+					</div>
+					<div id="mr-paypal-wrapper" hidden="true">
+						<div class="form-group">
+							<label for="mr-paypal-email">Paypal e-mail address</label>
+							<input type="text" name="paypal-email" class="form-control" id="mr-paypal-email" placeholder="t.paypal@amazing.com">
+							
+						</div>
+						<div class="form-group">
+							<label for="mr-paypal-password">Password</label>
+							<input type="password" name="paypal-password" class="form-control" id="mr-paypal-password" placeholder="password">
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="text-center">
+						<button type="submit" value="Book now" class="btn btn-succes btn-lg">Book now!</button>
+					</div>
+				</div>
+			</div>
 		</form>
-	
+	</div>
 </div>
 </body>
 </html>
