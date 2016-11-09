@@ -1,4 +1,5 @@
 Aanpassingen
+Note!!!! database heeft geen relaties alles updaten en inserten handmatig
 
 	Customer:
 		Customer ID varchar 32
@@ -16,5 +17,10 @@ Aanpassingen
 	
 	Booking:
 		Booking ID varchar 32
-	Bus:
-		Bus ID varchar 32
+		City varchar 50
+		Room id int 5
+		Customer ID varchar 32
+		
+	Busresevation:
+		Bus resevation ID varchar 32
+		
