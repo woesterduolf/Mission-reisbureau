@@ -1,0 +1,16 @@
+Aanpassingen
+
+	Customer:
+		Customer ID varchar 32
+		First_name varchar 50
+		First_name not null (Iedereen een voornaam gegeven)
+		Last_name varchar 100
+		
+	Account:
+		Customer ID varchar 32
+		Email varchar 254
+	
+	Booking:
+		Booking ID varchar 32
+	Bus:
+		Bus ID varchar 32
