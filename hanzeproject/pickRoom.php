@@ -1,7 +1,7 @@
 <?php 
 	require 'db/connection.php';
 	session_start();
-	$_SESSION['hotelid'] = '88';
+	$_SESSION['hotelid'] = '74';
 	if(!isset($_SESSION['hotelid'])){
 		header("refresh:0;url=hotels.php");
 	}
@@ -33,10 +33,10 @@
 	</head>
 	<body>
 		<!--topbanner spanning whole width on top of page-->
-		<div class="topbanner">
+		<center><div class="topbanner">
 			<img class="img-responsive" src="images/banner-project.jpg"/>
 			<br />
-		</div>
+		</div></center>
 		
 		<!--the rest of the page-->
 		<div class="container-fluid">
@@ -48,7 +48,7 @@
 
 				<!--mainroompickpart-->
 				<div class="col-sm-10">
-					<div class="container-fluid" style="border:solid 1px black;">
+					<div class="container-fluid" style="border:solid 1px black;border-radius:2px;">
 						<div class="row">
 							<div class="col-sm-3">
 								<h4><?php if(isset($hotelName)){echo $hotelName;}else{echo "This hotel does not exist.";}; ?><!--insert hotel name--></h4>
@@ -87,7 +87,7 @@
 										while($row = mysqli_fetch_assoc($result)) {
 											$roomType = $row["TYPE"];	
 											echo 
-												"<div class=\"container-fluid\" style=\"border:solid 1px black;\">
+												"<div class=\"container-fluid\" style=\"border:solid 1px black; border-radius:2px;\">
 													<div class=\"row\">
 														<div class=\"col-sm-3\">".			
 															"<p>Roomname: " . $row["TYPE"]. "</p>".

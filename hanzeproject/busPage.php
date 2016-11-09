@@ -1,20 +1,22 @@
 <?php 
 	require 'db/connection.php';
-
-	
-	//get date for site rows and data for every flight
-	$rows = 0;
-	$arrayData = array();
-			//querying db/filling $arrayData
-	$query = ("SELECT * FROM flightreservation GROUP BY flightID"); 
+	session_start();
+	$_SESSION['pickedHotel'] = '5';
+	$hotel = $_SESSION['pickedHotel'];
+	$query = ("SELECT city FROM booking "); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
 	if (mysqli_num_rows($result)>0){
 		while($row = mysqli_fetch_assoc($result)) {
-			$arrayData[$rows] =  array($row["flightID"], $row["departure_time"], $row["BOOKING_bookingID"], $row["price"], $row["AIRPORT_airportID"]);
-			$rows++;
-		} 
+			$cityName = $row["city"];
+		}
 	}else{
 		echo "0 results";
+	}
+	
+	if(isset( $_SESSION['booking_city'])){
+		$cityName = $_SESSION['booking_city'];
+	}else{
+		header("refresh:0;url=index.php");
 	}
 	
 	
@@ -35,10 +37,10 @@
 	</head>
 	<body>
 		<!--topbanner spanning whole width on top of page-->
-		<div class="topbanner">
+		<center><div class="topbanner">
 			<img class="img-responsive" src="images/banner-project.jpg"/>
 			<br />
-		</div>
+		</div></center>
 		
 		<!--the rest of the page-->
 		<div class="container-fluid">
@@ -50,7 +52,7 @@
 
 				<!--pickBusPart-->
 				<div class="col-sm-10">
-					<div class="busPage" style="border:solid 1px black;">
+					<div class="busPage" style="border:solid 1px black;border-radius:2px;">
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-sm-5">
@@ -70,9 +72,7 @@
 								<div class="col-sm-5">
 									<br />
 									<p>Please pick a boarding point for you bustrip back and pick a time.</p>
-										<input type="radio" name="pickedBusTo" value="Groningen" checked=""/>Groningen <br />
-										<input type="radio" name="pickedBusTo" value="Nijmegen"/>Nijmegen <br />
-										<input type="radio" name="pickedBusTo" value="Utrecht" />Utrecht <br />
+										<input type="radio" name="pickedBusTo" value="<?php echo $cityName; ?>" checked=""/><?php echo $cityName; ?> <br />
 								</div>
 								<div class="col-sm-1">
 								</div>	
@@ -103,7 +103,8 @@
 								<div class="col-sm-1">
 								</div>
 							</div>	
-							<div style="float:right; margin-right:5%;" >
+							<br />
+							<div style="float:right; margin-right:5%; margin-bottom:1%;" >
 									<input type="submit" name="submit" value="Send" />
 								</form>
 							</div>	

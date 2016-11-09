@@ -53,10 +53,10 @@
 	</head>
 	<body>
 		<!--topbanner spanning whole width on top of page-->
-		<div class="topbanner">
+		<center><div class="topbanner">
 			<img class="img-responsive" src="images/banner-project.jpg"/>
 			<br />
-		</div>
+		</div></center>
 		
 		<!--the rest of the page-->
 		<div class="container-fluid">
@@ -68,10 +68,10 @@
 
 				<!--pickFlightPart-->
 				<div class="col-sm-10">
-					<div class="bookingflight" style="border:solid 1px black;">
+					<div class="bookingflight" style="border:solid 1px black;border-radius:2px;">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-sm-11">
+								<div class="col-sm-12">
 									<table>
 										<tr>
 											<th></th>
@@ -180,10 +180,13 @@
 										</tr>
 									</table>
 								</div>
-								<div class="col-sm-1" style="position: absolute; bottom: 0; right: 5%;">
+								<br />
+								<div style="float:right; margin-right:5%;  margin-bottom:1%;">
 										<input type="submit" name="submit" value="Send" />
 									</form>
 								</div>
+								<br />
+									
 							</div>
 					</div>
 				</div>
