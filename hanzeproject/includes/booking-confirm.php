@@ -2,12 +2,12 @@
 	include '../db/connection.php';
 	include '../helpers/functions.php';
 	session_start();
-	$_SESSION["bookingscode"] = 2347;
+	$_SESSION["booking_id"] = 2347;
 	$_SESSION["transporttype"] = "By bus and plane";
 	//check if SESSIONS have a value
-	if (!empty($_SESSION["bookingscode"]) && !empty($_SESSION["transporttype"])) {
-		//get de bookingscode from the session
-		$id = $_SESSION["bookingscode"];
+	if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transporttype"])) {
+		//get de booking_id from the session
+		$id = $_SESSION["booking_id"];
 		$transportType = format_text($_SESSION["transporttype"]);
 
 		//make a SELECT statement for the db
@@ -56,7 +56,7 @@
 			echo "no results have been found.";
 		}
 	} else {
-		echo "No bookingscode found";
+		echo "No booking_id found";
 	}
 ?>
 <html>

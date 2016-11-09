@@ -2,14 +2,55 @@
 	//inludes for the page...
 	include '../db/connection.php';
 	include '../helpers/functions.php';
+	include '../helpers/errors.php';
 	
 	//starting the session
 	session_start();
 	
+	$validationErrors = array();
+
+	if (!empty($_POST)) {
+		//check filled in customerdata and add validated userdata to session
+		!empty($_POST['firstname']) && validate_text($_POST['firstname']) && strlen($_POST['firstname']) <= 50 ? $_SESSION['customer_firstname'] = $_POST['firstname'] : $validationErrors[] = errormessages('firstname');
+
+		!empty($_POST['lastname']) && validate_text($_POST['lastname']) && strlen($_POST['lastname']) <= 100 ? $_SESSION['customer_lastname'] = $_POST['lastname'] : $validationErrors[] = errormessages('lastname');
+
+		!empty($_POST['phone']) && validate_phone($_POST['phone']) ? $_SESSION['customer_phone'] = $_POST['phone'] : $validationErrors[] = errormessages('phone');
+
+		!empty($_POST['address']) && validate_text($_POST['address']) && strlen($_POST['address']) <= 100 ? $_SESSION['customer_address'] = $_POST['address'] : $validationErrors[] = errormessages('address');
+
+		!empty($_POST['zipcode']) && validate_zipcode($_POST['zipcode']) ? $_SESSION['customer_zipcode'] = $_POST['zipcode'] : $validationErrors[] = errormessages('zipcode');
+
+		!empty($_POST['city']) && validate_text($_POST['city']) && strlen($_POST['city']) <= 100 ? $_SESSION['customer_city'] = $_POST['city'] : $validationErrors[] = errormessages('city');
+
+		!empty($_POST['country']) && validate_text($_POST['country']) && strlen($_POST['country']) <= 100 ? $_SESSION['customer_country'] = $_POST['country'] : $validationErrors[] = errormessages('country');
+
+		$_SESSION['customer_payment'] = $_POST['paymentmethode'];
+		if (empty($validationErrors)) {
+			//check which payment option was selected and redirect to page
+			if ($_SESSION['customer_payment'] == 'ideal') {
+				Header("refresh:0; URL=Ideal.php");
+				exit();
+			}
+			if ($_SESSION['customer_payment'] == 'credit') {
+				Header("refresh:0; URL=creditcard.php");
+				exit();	
+			}
+			if ($_SESSION['customer_payment'] == 'paypal') {
+				Header("refresh:0; URL=paypal.php");
+				exit();
+			}
+			Header("refresh:0; URL=booking.php");
+		}
+		
+		
+		
+	}
+	
 	// filling the session with testdata
-	$_SESSION['city'] = "Athens";
-	$_SESSION['date_of_arrival'] = "2016-11-08";
-	$_SESSION['date_of_departure'] = "2016-11-28";
+	$_SESSION['booking_city'] = "Athens";
+	$_SESSION['booking_date_of_arrival'] = "2016-11-08";
+	$_SESSION['booking_date_of_departure'] = "2016-11-28";
 	$_SESSION['hotel_name'] = "Het zoentje";
 	$_SESSION['room_type'] = "luxe";
 	$_SESSION['room_price'] = 500;
@@ -18,35 +59,31 @@
 	$_SESSION['transport_type'] = "Bus";
 	
 	// Getting data from the session
-	$city = $_SESSION['city'];
-	$arrivalDate = $_SESSION['date_of_arrival'];
-	$departureDate = $_SESSION['date_of_departure'];
+	$city = $_SESSION['booking_city'];
+	$arrivalDate = $_SESSION['booking_date_of_arrival'];
+	$departureDate = $_SESSION['booking_date_of_departure'];
 	$hotelName = $_SESSION['hotel_name'];
 	$roomType = $_SESSION['room_type'];
 	$roomPrice = $_SESSION['room_price'];
 	$busPrice = $_SESSION['bus_price'];
-	$flightPrice = $_SESSiON['flight_Price'];
+	$flightPrice = $_SESSION['flight_Price'];
 	$transport_type = $_SESSION['transport_type'];
 
 	$getImageUrl = "../images/cities/" . strtolower($city) . ".jpg";
 	$getHotelImageUrl = "../images/hotels/" . strtolower($hotelName) . ".jpg";
 	$standardImage = "../images/hotels/standard.jpg";
 	
-	
 	//calculate room price roomprice * days
 	$days = get_daydiff($arrivalDate, $departureDate);
 	$hotelPrice = $roomPrice * $days;
 	$transportationPrice = total_transportcost($busPrice, $flightPrice);
 	$totalPrice = $transportationPrice + $hotelPrice;
-
 ?>
-
 <html>
 <head>
 	<title>Your booking</title>
 	<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<script src="../js/jquery.min.js"></script>
-	<script src="../js/main.js"></script>
 	<link href="../css/main.css" rel="stylesheet" type="text/css" />
     <!-- Custom CSS -->
     <link href="../css/thumbnail-gallery.css" rel="stylesheet">
@@ -173,7 +210,16 @@
 				</div>
 			</div>
 		</div>
-		<form method="POST" action="#">
+		<div class="row" id="mr-validation-summary">
+			<div class="col-md-12 text-center">
+				<?php
+					foreach ($validationErrors as $error) {
+						echo "<span class=\"text-danger\">- $error </span><br>";
+					}
+				?>
+			</div>
+		</div>
+		<form method="POST" action="">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="form-group">
@@ -186,7 +232,7 @@
 					</div>
 					<div class="form-group">
 						<label for="mr-phone">Phonenumber</label>
-						<input type="text" name="phonenumber" class="form-control" id="mr-phone" placeholder="065879224">
+						<input type="text" name="phone" class="form-control" id="mr-phone" placeholder="065879224">
 					</div>
 					<div class="form-group">
 						<label for="mr-address">Address</label>
@@ -219,38 +265,6 @@
 						    <option value="credit">Creditcard</option>
 						    <option value="paypal">Paypal</option>
 						</select>
-						<p>We accept <a href="https://www.ideal.nl" target="_blank">Ideal</a>, Creditcard and <a href="https://www.paypal.com" target="_blank">Paypal</a></p>
-					</div>
-					<div id="mr-ideal-wrapper" hidden="true">
-						<div class="form-group">
-							<label for="mr-ideal">IBAN number</label>
-							<input type="text" name="iban" class="form-control" id="mr-ideal" placeholder="INGB0001234567">
-						</div>
-						<div class="form-group">
-							<label for="mr-cardnumber">Card number</label>
-							<input type="text" name="cardnumber" class="form-control" id="mr-ideal-cardnumber" placeholder="154">
-						</div>
-					</div>
-					<div id="mr-creditcard-wrapper" hidden="true">
-						<div class="form-group">
-							<label for="mr-creditcard">Creditcard</label>
-							<input type="text" name="creditcard" class="form-control" id="mr-creditcard" placeholder="84158541515">
-						</div>
-						<div class="form-group">
-							<label for="mr-creditcard-confirmnumber">Confirmnumber</label>
-							<input type="text" name="confirmnumber" class="form-control" id="mr-creditcard-confirmnumber" placeholder="515">
-						</div>						
-					</div>
-					<div id="mr-paypal-wrapper" hidden="true">
-						<div class="form-group">
-							<label for="mr-paypal-email">Paypal e-mail address</label>
-							<input type="text" name="paypal-email" class="form-control" id="mr-paypal-email" placeholder="t.paypal@amazing.com">
-							
-						</div>
-						<div class="form-group">
-							<label for="mr-paypal-password">Password</label>
-							<input type="password" name="paypal-password" class="form-control" id="mr-paypal-password" placeholder="password">
-						</div>
 					</div>
 				</div>
 			</div>

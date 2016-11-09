@@ -10,12 +10,7 @@
 	
 	$bank = $_SESSION['bank'];
 	$text = "The " .$bank. " is proccessing your payment";
-
-	
-		
-
 ?>
-
 <html>
 <head>
 	<title>Processing!</title>

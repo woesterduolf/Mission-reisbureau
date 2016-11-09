@@ -15,6 +15,34 @@ function format_text($text) {
 	return $text;
 }
 
+function validate_text($text) {
+	format_text($text);
+	if (!is_numeric($text)) {
+		return true;
+	}
+	return false;
+}
+
+function validate_zipcode($text) {
+	format_text($text);
+	if (preg_match("/^[1-9][0-9]{3}\s?([a-zA-Z]{2})?$/", $text)) {
+		if (strlen($text) == 6) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function validate_phone($input) {
+	
+	if (is_numeric($input)) {
+		if (strlen($input) <= 20) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function format_decimal($input) {
 	$number = intval($input);
 	if (is_int($number)) {
