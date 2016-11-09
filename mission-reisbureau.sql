@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2016 at 07:30 PM
+-- Generation Time: Nov 09, 2016 at 07:44 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -78,6 +78,21 @@ CREATE TABLE `customer` (
   `city` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
   `phonenumber` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `facilities`
+--
+
+CREATE TABLE `facilities` (
+  `hotel_id` int(10) NOT NULL,
+  `wifi` tinyint(1) NOT NULL,
+  `breakfast` tinyint(1) NOT NULL,
+  `swimmingpool` tinyint(1) NOT NULL,
+  `private_parking` tinyint(1) NOT NULL,
+  `television` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -178,6 +193,12 @@ ALTER TABLE `customer`
   ADD UNIQUE KEY `customer_id` (`customer_id`);
 
 --
+-- Indexes for table `facilities`
+--
+ALTER TABLE `facilities`
+  ADD PRIMARY KEY (`hotel_id`);
+
+--
 -- Indexes for table `fligth`
 --
 ALTER TABLE `fligth`
@@ -226,6 +247,12 @@ ALTER TABLE `booking`
 --
 ALTER TABLE `bus_reservation`
   ADD CONSTRAINT `bus_reservation_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `facilities`
+--
+ALTER TABLE `facilities`
+  ADD CONSTRAINT `facilities_ibfk_1` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`hotel_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `fligth_reservation`
