@@ -1,8 +1,6 @@
 <?php 
 	require 'db/connection.php';
-	session_start();
-	$_SESSION['pickedHotel'] = '55';
-	$hotel = $_SESSION['pickedHotel'];
+	
 	$query = ("SELECT city FROM booking "); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
 	if (mysqli_num_rows($result)>0){
@@ -71,119 +69,122 @@
 				<!--pickFlightPart-->
 				<div class="col-sm-10">
 					<div class="bookingflight" style="border:solid 1px black;">
-						<div>
-							<table>
-								<tr>
-									<th></th>
-									<th style="width:200px;height:100px;">Flight from <?php echo $cityName;?></th>
-									<th style="width:200px;height:100px;"><img class="img-responsive" src="images/airplane1.png" /></th>
-									<th style="width:125px;height:100px;"></th>
-									<th style="width:125px;height:100px;"></th>
-								</tr>
-								<tr><td></td></tr>
-								<tr>
-									<td>
-										<form action="" method="post">
-											<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[0][2]; ?>" checked=""/>	
-									</td>
-									<td>
-										<p>flight: <?php  echo "(" .$arrayData[0][4]. ")-(" .$arrayData[0][0].")"; ?></p>
-									</td>
-									<td>
-										<p>date: <?php echo $arrayData[0][1]; ?></p>
-									</td>
-									<td>
-										<p>time: <?php echo randTime(); ?></p>
-									</td>	
-									<td>
-										<p>price: <?php echo $arrayData[0][3]; ?></p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-											<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[1][2]; ?>" />	
-									</td>
-									<td>
-										<p>flight: <?php  echo "(" .$arrayData[1][4]. ")-(" .$arrayData[1][0].")"; ?></p>
-									</td>
-									<td>
-										<p>date: <?php echo $arrayData[1][1]; ?></p>
-									</td>
-									<td>
-										<p>time: <?php echo randTime();  ?></p>
-									</td>	
-									<td>
-										<p>price: <?php echo $arrayData[1][3]; ?></p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-											<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[2][2]; ?>" />	
-									</td>
-									<td>
-										<p>flight: <?php  echo "(" .$arrayData[2][4]. ")-(" .$arrayData[2][0].")"; ?></p>
-									</td>
-									<td>
-										<p>date: <?php echo $arrayData[2][1]; ?></p>
-									</td>
-									<td>
-										<p>time: <?php echo randTime(); ?></p>
-									</td>	
-									<td>
-										<p>price: <?php echo $arrayData[2][3]; ?></p>
-									</td>
-								</tr>
-							</table>
-							<hr>
-							<table>
-								<tr>
-									<th></th>
-									<th style="width:200px;height:100px;">Flight to <?php echo $cityName;?></th>
-									<th style="width:200px;height:100px;"><img class="img-responsive" src="images/airplane2.png" /></th>
-									<th style="width:125px;height:100px;"></th>
-									<th style="width:125px;height:100px;"></th>
-								</tr>
-								<tr></tr>
-								<tr>
-									<td>
-											<input type="radio" name="pickedFlightTo" value="<?php echo $arrayData[3][2]; ?>" checked=""/>	
-									</td>
-									<td>
-										<p>flight: <?php  echo "(" .$arrayData[3][4]. ")-(" .$arrayData[3][0].")"; ?></p>
-									</td>
-									<td>
-										<p>date: <?php echo $arrayData[3][1]; ?></p>
-									</td>
-									<td>
-										<p>time: <?php echo randTime(); ?></p>
-									</td>	
-									<td>
-										<p>price: <?php echo $arrayData[3][3]; ?></p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-											<input type="radio" name="pickedFlightTo" value="<?php echo $arrayData[4][2]; ?>" />	
-									</td>
-									<td>
-										<p>flight: <?php  echo "(" .$arrayData[4][4]. ")-(" .$arrayData[4][0].")"; ?></p>
-									</td>
-									<td>
-										<p>date: <?php echo $arrayData[4][1]; ?></p>
-									</td>
-									<td>
-										<p>time: <?php echo randTime(); ?></p>
-									</td>	
-									<td>
-										<p>price: <?php echo $arrayData[4][3]; ?></p>
-									</td>
-								</tr>
-							</table>
-						</div>
-						<div style="float:right; margin-right:5%;" >
-								<input type="submit" name="submit" value="Send" />
-							</form>
-						</div>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-11">
+									<table>
+										<tr>
+											<th></th>
+											<th style="width:200px;height:100px;">Flight from <?php echo $cityName;?></th>
+											<th style="width:200px;height:100px;"><img class="img-responsive" src="images/airplane1.png" /></th>
+											<th style="width:125px;height:100px;"></th>
+											<th style="width:125px;height:100px;"></th>
+										</tr>
+										<tr><td></td></tr>
+										<tr>
+											<td>
+												<form action="" method="post">
+													<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[0][2]; ?>" checked=""/>	
+											</td>
+											<td>
+												<p>flight: <?php  echo "(" .$arrayData[0][4]. ")-(" .$arrayData[0][0].")"; ?></p>
+											</td>
+											<td>
+												<p>date: <?php echo $arrayData[0][1]; ?></p>
+											</td>
+											<td>
+												<p>time: <?php echo randTime(); ?></p>
+											</td>	
+											<td>
+												<p>price: <?php echo $arrayData[0][3]; ?></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+													<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[1][2]; ?>" />	
+											</td>
+											<td>
+												<p>flight: <?php  echo "(" .$arrayData[1][4]. ")-(" .$arrayData[1][0].")"; ?></p>
+											</td>
+											<td>
+												<p>date: <?php echo $arrayData[1][1]; ?></p>
+											</td>
+											<td>
+												<p>time: <?php echo randTime();  ?></p>
+											</td>	
+											<td>
+												<p>price: <?php echo $arrayData[1][3]; ?></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+													<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[2][2]; ?>" />	
+											</td>
+											<td>
+												<p>flight: <?php  echo "(" .$arrayData[2][4]. ")-(" .$arrayData[2][0].")"; ?></p>
+											</td>
+											<td>
+												<p>date: <?php echo $arrayData[2][1]; ?></p>
+											</td>
+											<td>
+												<p>time: <?php echo randTime(); ?></p>
+											</td>	
+											<td>
+												<p>price: <?php echo $arrayData[2][3]; ?></p>
+											</td>
+										</tr>
+									</table>
+									<hr>
+									<table>
+										<tr>
+											<th></th>
+											<th style="width:200px;height:100px;">Flight to <?php echo $cityName;?></th>
+											<th style="width:200px;height:100px;"><img class="img-responsive" src="images/airplane2.png" /></th>
+											<th style="width:125px;height:100px;"></th>
+											<th style="width:125px;height:100px;"></th>
+										</tr>
+										<tr></tr>
+										<tr>
+											<td>
+													<input type="radio" name="pickedFlightTo" value="<?php echo $arrayData[3][2]; ?>" checked=""/>	
+											</td>
+											<td>
+												<p>flight: <?php  echo "(" .$arrayData[3][4]. ")-(" .$arrayData[3][0].")"; ?></p>
+											</td>
+											<td>
+												<p>date: <?php echo $arrayData[3][1]; ?></p>
+											</td>
+											<td>
+												<p>time: <?php echo randTime(); ?></p>
+											</td>	
+											<td>
+												<p>price: <?php echo $arrayData[3][3]; ?></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="radio" name="pickedFlightTo" value="<?php echo $arrayData[4][2]; ?>" />	
+											</td>
+											<td>
+												<p>flight: <?php  echo "(" .$arrayData[4][4]. ")-(" .$arrayData[4][0].")"; ?></p>
+											</td>
+											<td>
+												<p>date: <?php echo $arrayData[4][1]; ?></p>
+											</td>
+											<td>
+												<p>time: <?php echo randTime(); ?></p>
+											</td>	
+											<td>
+												<p>price: <?php echo $arrayData[4][3]; ?></p>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-sm-1" style="position: absolute; bottom: 0; right: 5%;">
+										<input type="submit" name="submit" value="Send" />
+									</form>
+								</div>
+							</div>
 					</div>
 				</div>
 			
