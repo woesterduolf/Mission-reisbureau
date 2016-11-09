@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2016 at 07:09 PM
+-- Generation Time: Nov 09, 2016 at 07:30 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -117,6 +117,7 @@ CREATE TABLE `fligth_reservation` (
 
 CREATE TABLE `hotel` (
   `hotel_id` int(10) NOT NULL,
+  `hotel_name` varchar(50) NOT NULL,
   `stars` int(1) DEFAULT NULL,
   `rating` int(3) NOT NULL,
   `adress` varchar(100) NOT NULL,
