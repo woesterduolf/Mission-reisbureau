@@ -1,9 +1,11 @@
 <?php 
 	require 'db/connection.php';
 	session_start();
-	$_SESSION['pickedHotel'] = '55';
-	$hotel = $_SESSION['pickedHotel'];
-	
+	$_SESSION['hotelid'] = '88';
+	if(!isset($_SESSION['hotelid'])){
+		header("refresh:0;url=hotels.php");
+	}
+	$hotel = $_SESSION['hotelid'];
 	$query = ("SELECT name FROM hotel WHERE hotelID = $hotel"); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
 	if (mysqli_num_rows($result)>0){
@@ -11,7 +13,7 @@
 			$hotelName = $row["name"];
 		}
 	}else{
-		echo "0 results";
+		//echo "0 results";
 	}
 	
 	
@@ -49,7 +51,7 @@
 					<div class="container-fluid" style="border:solid 1px black;">
 						<div class="row">
 							<div class="col-sm-3">
-								<h4><?php echo $hotelName; ?><!--insert hotel name--></h4>
+								<h4><?php if(isset($hotelName)){echo $hotelName;}else{echo "This hotel does not exist.";}; ?><!--insert hotel name--></h4>
 								<!--image of the hotel(now it is the logo)-->
 								<img class="img-responsive" src="images/hotels/<?php echo str_replace(" ", "", strtolower($hotelName)); ?>">
 								<h4>Facilities:</h4>
