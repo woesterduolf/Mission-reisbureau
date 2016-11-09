@@ -33,7 +33,6 @@ function payment_complete(){
 	
 	// fligth data
 	$fligth_id = "";
-	$fligth_seat = $_SESSION['fligth_seat'];
 	$flight_price = $_SESSION['flight_Price'];
 	$flight_departure_time = $_SESSION['flight_departure_time'];
 	$flight_arrival_time = $_SESSION['flight_arrival_time'];
