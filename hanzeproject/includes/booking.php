@@ -48,6 +48,9 @@
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/main.js"></script>
 	<link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <!-- Custom CSS -->
+    <link href="../css/thumbnail-gallery.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/image-overlay-booking.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -62,11 +65,15 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-6 thumb">
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <div class="hovereffect">
                     <a class="thumbnail">
-                        <img class="img-responsive" src="<?php echo $getImageUrl; ?>" alt="<?php echo $city; ?>">
+                        <img class="img-responsive" src="<?php echo $getImageUrl; ?>" alt="" width="400" height="300">
                     </a>
+                    <div class="overlay">
+                        <h2><?php echo $city; ?></h2>
+                       
+                    </div>
                 </div>
             </div>
 			<div class="col-md-6">
@@ -114,11 +121,15 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-md-6 thumb">
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <div class="hovereffect">
                     <a class="thumbnail">
-                        <img class="img-responsive" src="<?php echo $standardImage; ?>" alt="<?php echo $hotelName; ?>">
+                        <img class="img-responsive" src="<?php echo $standardImage; ?>" alt="" width="400" height="300">
                     </a>
+                    <div class="overlay">
+                        <h2><?php echo $hotelName; ?></h2>
+
+                    </div>
                 </div>
             </div>
 		</div>
