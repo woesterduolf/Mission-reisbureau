@@ -1,4 +1,5 @@
-$customer_id = "";
+	//Customer info
+	$customer_id = "";
 	$customer_first_name = $_SESSION['customer_first_name'];
 	$customer_last_name = $_SESSION['customer_last_name'];
 	$customer_adress = $_SESSION['customer_adress'];
