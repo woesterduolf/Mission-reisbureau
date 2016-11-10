@@ -1,3 +1,22 @@
+<?php
+if(isset($_POST['submit'])){
+    session_start();
+    $arrival = $_POST['arrival'];
+    $departure = $_POST['departure'];
+    $transport = $_POST['transport'];
+    
+    $_SESSION['transport'] = $transport;
+    $_SESSION['booking_date_of_arrival'] = $arrival;
+    $_SESSION['booking_date_of_departure']= $departure;
+    
+    header("Refresh:0 ; URL=city.php");
+    
+    
+}
+
+
+
+?>
 <html>
 <head>
 <title>Cultural Navigation</title>
@@ -82,9 +101,11 @@
 						})();
 					</script>
 					<div class="online_reservation">
+                                            <form action="" method="POST"
 							<?php
                                                             require 'includes/bookingform.php';
                                                         ?>
+                                        </form>
 					</div>
 					<!---->	
 			</div>
