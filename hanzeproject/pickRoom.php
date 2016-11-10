@@ -1,8 +1,7 @@
 <?php 
 	require 'db/connection.php';
 	session_start();
-	$_SESSION['hotelid'] = '2';
-	$_SESSION['transport'] = 'flightPage';
+	
 	if(!isset($_SESSION['hotelid']) || !isset($_SESSION['transport'])){
 		header("refresh:0;url=hotels.php");
 	}
