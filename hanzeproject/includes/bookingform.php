@@ -6,7 +6,7 @@
 												 <h5>Arrival</h5>
 												 <div class="book_date">
                                                                                                     
-                                                                                                         <input class="date" id="datepicker" name="arrival" type="text" value="2/04/2015" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '2/04/2015';}" required=>
+                                                                                                         <input class="date" id="datepicker" name="arrival" type="text" value="10/11/2016" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '10/11/2016';}" required=>
 													
 												 </div>					
 											 </li>
@@ -14,7 +14,7 @@
 												 <h5>Departure</h5>
 												 <div class="book_date">
 												 
-													<input class="date" name="departure" id="datepicker1" type="text" value="22/08/2015" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '22/08/2015';}" required=>
+													<input class="date" name="departure" id="datepicker1" type="text" value="10/11/2015" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '10/11/2015';}" required=>
 												
 												 </div>		
 											 </li>
