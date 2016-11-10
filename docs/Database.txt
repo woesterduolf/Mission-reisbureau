@@ -1,0 +1,26 @@
+Aanpassingen
+Note!!!! database heeft geen relaties alles updaten en inserten handmatig
+
+	Customer:
+		Customer ID varchar 32
+		First_name varchar 50
+		First_name not null (Iedereen een voornaam gegeven)
+		Last_name varchar 100
+		adress varchar 50
+		city varchar 40
+		country varchar 40
+		phonenumber int 20
+		
+	Account:
+		Customer ID varchar 32
+		Email varchar 254
+	
+	Booking:
+		Booking ID varchar 32
+		City varchar 50
+		Room id int 5
+		Customer ID varchar 32
+		
+	Busresevation:
+		Bus resevation ID varchar 32
+		
