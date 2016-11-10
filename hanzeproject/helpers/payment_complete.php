@@ -29,7 +29,7 @@ function payment_complete(){
 	$bus_resevation_id = "create_uniqid()";
 	$bus_boarding_point = $_SESSION['bus_boarding_point'];
 	$bus_price = $_SESSION['bus_price'];
-	$bus_boarding_point_return = $_SESSION['$bus_boarding_point_return'];
+	$bus_boarding_point_return = $_SESSION['bus_boarding_point_return'];
 	$booking_id;
 	
 	// fligth data
