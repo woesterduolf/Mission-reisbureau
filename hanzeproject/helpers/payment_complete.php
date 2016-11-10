@@ -26,19 +26,22 @@ function payment_complete(){
 	
 	
 	//bus data
-	$bus_resevation_id = "create_uniqid()";
-	$bus_boarding_point = $_SESSION['bus_boarding_point'];
-	$bus_price = $_SESSION['bus_price'];
-	$bus_boarding_point_return = $_SESSION['bus_boarding_point_return'];
-	$booking_id;
-	
+	If ($_SESSION['transport'] == "busPage"){
+		$bus_resevation_id = "create_uniqid()";
+		$bus_boarding_point = $_SESSION['bus_boarding_point'];
+		$bus_price = $_SESSION['bus_price'];
+		$bus_boarding_point_return = $_SESSION['bus_boarding_point_return'];
+		$booking_id;
+	}
 	// fligth data
-	$flight_reservation_id = "create_uniqid()";
-	$flight_seat = $_SESSION['flight_seat'];
-	$flight_price = $_SESSION['flight_Price'];
-	$flight_id = $_SESSION['flight_id'];
-	$booking_id;
-		
+	IF ($_SESSION['transport'] == "flightPage"){
+		$flight_reservation_id = "create_uniqid()";
+		$flight_seat = $_SESSION['flight_seat'];
+		$flight_price = $_SESSION['flight_Price'];
+		$flight_id = $_SESSION['flight_id'];
+		$booking_id;
+	}
+	
 	$sql_customer = "INSERT INTO customer (customer_id, first_name, last_name, address, zipcode, city, country, phonenumber)
 					VALUES	('$customer_id', '$customer_first_name', '$customer_last_name', '$customer_address', '$customer_zipcode', '$customer_city', $customer_phonenumer)";
 	
