@@ -120,7 +120,7 @@
 	$roomPrice = $_SESSION['room_price'];
 	$busPrice = $_SESSION['bus_price'];
 	$flightPrice = $_SESSION['flight_Price'];
-	$transport_type = $_SESSION['transport_type'];
+	$transport_type = $_SESSION['transport'];
 
 	//get customerdata from the sessions
 	$firstname = $_SESSION['customer_first_name'];
