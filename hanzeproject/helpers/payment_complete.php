@@ -61,6 +61,6 @@ function payment_complete(){
 						VALUES ($flight_reservation_id, $flight_seat, $flight_price,  $booking_id, $fligth_id)";
 	}
 	
-	
+	mysqli_close($db);
 }	
 ?>
