@@ -71,8 +71,8 @@
 	
 	// filling the session with testdata
 	/*$_SESSION['booking_city'] = "Athens";*/
-	$_SESSION['booking_date_of_arrival'] = "2016-11-08";
-	$_SESSION['booking_date_of_departure'] = "2016-11-28";
+	$_SESSION['booking_date_of_arrival'] = "2016/11/08";
+	$_SESSION['booking_date_of_departure'] = "2016/11/28";
 	/*$_SESSION['hotel_name'] = "Het zoentje";
 	$_SESSION['room_type'] = "luxe";
 	$_SESSION['room_price'] = 500;

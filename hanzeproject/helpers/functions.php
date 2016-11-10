@@ -142,8 +142,8 @@ function validate_date($date)
 //get de diff between check-in date and the check-out date
 //source: http://stackoverflow.com/questions/2040560/finding-the-number-of-days-between-two-dates
 function get_daydiff($checkinDate, $checkoutDate) {
-	$splitCheckinDate = explode('-', $checkinDate);
-	$splitCheckoutDate = explode('-', $checkoutDate);
+	$splitCheckinDate = explode('/', $checkinDate);
+	$splitCheckoutDate = explode('/', $checkoutDate);
 	$dayDiff = $splitCheckoutDate[2] - $splitCheckinDate[2];
 	return $dayDiff;
 }

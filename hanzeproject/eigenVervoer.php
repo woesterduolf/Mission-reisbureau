@@ -8,6 +8,6 @@
 	}
 	var_dump($_GET['pickedRoom']);
 	echo "GODVERDOMME RICARDO NIET NOG EEN PAGINA!";
-	header("refresh:10;url=includes/booking.php");
+	header("refresh:0;url=includes/booking.php");
 ?>
 

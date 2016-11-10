@@ -36,5 +36,5 @@
 	</div>
 	</div>
 </body>
-<!--  <meta http-equiv="refresh" content="5;/mission-reisbureau/hanzeproject/includes/booking-confirm"/> -->
+<meta http-equiv="refresh" content="5;/mission-reisbureau/hanzeproject/includes/booking-confirm"/>
 </html>
