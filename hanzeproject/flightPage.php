@@ -96,7 +96,7 @@
 										</tr>
 										<tr>
 											<td>
-													<input type="radio" name="pickedFlightFrom" value="<?php echo "$IKBENBOOS;" ?>" />	
+													<input type="radio" name="pickedFlightFrom" value="<?php echo "IKBENBOOS;" ?>" />	
 											</td>
 											<td>
 												<p>flight:COMPANY-NUMBER</p>
