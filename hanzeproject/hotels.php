@@ -105,7 +105,7 @@ require 'helpers/functions.php'; // Include functie bestand, deze is noodzakelij
 
 <body>
     <div class="banner">
-        <img width="100%" height="100%" src="images/banner.jpg">
+        <img width="100%" src="images/banner.jpg">
     </div>
     <div class="col-md-3 filterdeel " >
         <div class="panel-heading">
