@@ -10,6 +10,7 @@
 	$validationErrors = array();
 	
 	$_SESSION['customer_first_name'] = "";
+	$_SESSION['customer_last_name'] = "";
 	$_SESSION['customer_address'] = "";
 	$_SESSION['customer_zipcode'] = "";
 	$_SESSION['customer_city'] = "";
@@ -50,11 +51,6 @@
 			}
 			Header("refresh:0; URL=booking.php");
 		}
-
-
-		
-		
-		
 	}
 	
 	// filling the session with testdata

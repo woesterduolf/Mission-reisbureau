@@ -23,6 +23,18 @@ function errormessages($errorname) {
 		case 'phone':
 			return 'phonenumber is not correct it should contain 10 numbers and cannot be empty.';
 			break;
+		case 'cardholder':
+			return 'Cardholder name is invalid';
+			break;
+		case 'cardnumber':
+			return 'cardnumber is not valid';
+			break;
+		case 'expiredate':
+			return 'expiredate is not correct';
+			break;
+		case 'cvv':
+			return 'cvv code is not correct';
+			break;
 		case 'empty':
 			return 'Cannot find content';
 			break;
