@@ -1,21 +1,12 @@
 <?php 
 	require 'db/connection.php';
 	
-	$query = ("SELECT city FROM booking "); 
-	$result = mysqli_query($db, $query) or die('Error querying from database.');
-	if (mysqli_num_rows($result)>0){
-		while($row = mysqli_fetch_assoc($result)) {
-			$cityName = $row["city"];
-		}
+	$_SESSION['booking_city'] = "Groningen";
+	if (isset($_SESSION['booking_city'])){
+		$cityName = $_SESSION['booking_city'];
 	}else{
-		echo "0 results";
-	}
-	if(!isset($_GET['pickedRoom'])){
 		header("refresh:0;url=index.php");
-	}else{
-		$_SESSION['roomType'] = $_GET['pickedRoom'];
 	}
-	
 	function randTime(){
 		$num = rand(0,23);
 		$num2 = rand(0,59);
@@ -29,21 +20,8 @@
 	}
 	
 	//get date for site rows and data for every flight
-	$rows = 0;
-	$arrayData = array();
-			//querying db/filling $arrayData
-	$query = ("SELECT * FROM flightreservation GROUP BY flightID"); 
-	$result = mysqli_query($db, $query) or die('Error querying from database.');
-	if (mysqli_num_rows($result)>0){
-		while($row = mysqli_fetch_assoc($result)) {
-			$arrayData[$rows] =  array($row["flightID"], $row["departure_time"], $row["BOOKING_bookingID"], $row["price"], $row["AIRPORT_airportID"]);
-			$rows++;
-		} 
-	}else{
-		echo "0 results";
-	}
-	print_r($_POST);
 	
+	print_r($_POST);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
@@ -61,7 +39,7 @@
 	<body>
 		<!--topbanner spanning whole width on top of page-->
 		<center><div class="topbanner">
-			<img class="img-responsive" src="images/banner-project.jpg"/>
+			<img class="img-responsive" src="images/banner.jpg"/>
 			<br />
 		</div></center>
 		
@@ -90,54 +68,54 @@
 										<tr><td></td></tr>
 										<tr>
 											<td>
-												<form action="booking.php" method="post">
-													<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[0][2]; ?>" checked=""/>	
+												<form action="" method="post">
+													<input type="radio" name="pickedFlightFrom" value="<?php echo "Ikbenboos"; ?>" checked=""/>	
 											</td>
 											<td>
-												<p>flight: <?php  echo "(" .$arrayData[0][4]. ")-(" .$arrayData[0][0].")"; ?></p>
+												<p>flight: bullshit-meerbullshit</p>
 											</td>
 											<td>
-												<p>date: <?php echo $arrayData[0][1]; ?></p>
+												<p>date: 11-11-11</p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: <?php echo $arrayData[0][3]; ?></p>
+												<p>price: ONE MILLION DOLLAR</p>
 											</td>
 										</tr>
 										<tr>
 											<td>
-													<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[1][2]; ?>" />	
+													<input type="radio" name="pickedFlightFrom" value="<?php echo "$IKBENBOOS;" ?>" />	
 											</td>
 											<td>
-												<p>flight: <?php  echo "(" .$arrayData[1][4]. ")-(" .$arrayData[1][0].")"; ?></p>
+												<p>flight:COMPANY-NUMBER</p>
 											</td>
 											<td>
-												<p>date: <?php echo $arrayData[1][1]; ?></p>
+												<p>date: ANDERE KUTDATUM</p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime();  ?></p>
 											</td>	
 											<td>
-												<p>price: <?php echo $arrayData[1][3]; ?></p>
+												<p>price: $1354364325</p>
 											</td>
 										</tr>
 										<tr>
 											<td>
-													<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[2][2]; ?>" />	
+													<input type="radio" name="pickedFlightFrom" value="<?php echo "aaesgdf"; ?>" />	
 											</td>
 											<td>
-												<p>flight: <?php  echo "(" .$arrayData[2][4]. ")-(" .$arrayData[2][0].")"; ?></p>
+												<p>flight: company2-42</p>
 											</td>
 											<td>
-												<p>date: <?php echo $arrayData[2][1]; ?></p>
+												<p>date: 99-99-9999</p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: <?php echo $arrayData[2][3]; ?></p>
+												<p>price: $42525436</p>
 											</td>
 										</tr>
 									</table>
@@ -153,36 +131,36 @@
 										<tr></tr>
 										<tr>
 											<td>
-													<input type="radio" name="pickedFlightTo" value="<?php echo $arrayData[3][2]; ?>" checked=""/>	
+													<input type="radio" name="pickedFlightTo" value="<?php echo "andnad" ?>" checked=""/>	
 											</td>
 											<td>
-												<p>flight: <?php  echo "(" .$arrayData[3][4]. ")-(" .$arrayData[3][0].")"; ?></p>
+												<p>flight: company2-number4</p>
 											</td>
 											<td>
-												<p>date: <?php echo $arrayData[3][1]; ?></p>
+												<p>date: 12-12-12</p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: <?php echo $arrayData[3][3]; ?></p>
+												<p>price: $2143</p>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<input type="radio" name="pickedFlightTo" value="<?php echo $arrayData[4][2]; ?>" />	
+												<input type="radio" name="pickedFlightTo" value="<?php echo "adsfaf" ?>" />	
 											</td>
 											<td>
-												<p>flight: <?php  echo "(" .$arrayData[4][4]. ")-(" .$arrayData[4][0].")"; ?></p>
+												<p>flight: kutcompany-kutflight</p>
 											</td>
 											<td>
-												<p>date: <?php echo $arrayData[4][1]; ?></p>
+												<p>date: 12-12-19</p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: <?php echo $arrayData[4][3]; ?></p>
+												<p>price: $3452431</p>
 											</td>
 										</tr>
 									</table>
