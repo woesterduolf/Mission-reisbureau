@@ -81,6 +81,19 @@
 	$_SESSION['transport_type'] = "Bus";*/
 	
 	//sander random code voor room price uit db swek dingen jwz :D
+	$dbhost = "localhost"; 
+	$dbuser = "root"; 
+	$dbpass = ""; 
+	$dbname = "mission-reisbureau"; 
+	$db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+	
+	// Test of de verbinding werkt! 
+	if (mysqli_connect_errno()) {
+		die("Error in connection: " .
+			mysqli_connect_error() .
+			" (" . mysqli_connect_errno() . ")"
+		);
+	} 
 	if(isset($_SESSION['room_id'])){
 		$somevar = $_SESSION['room_id'];
 	}else{
