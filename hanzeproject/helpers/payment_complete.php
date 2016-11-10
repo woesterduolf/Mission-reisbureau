@@ -2,16 +2,15 @@
 
 function payment_complete(){
 	
-	include_once '../db/connection.php';
+	include '../db/connection.php';
 	include_once '../helpers/functions.php';
 	include_once '../helpers/create_uniqid.php';
-	session_start();
 	
 	//customer data everything comes from the session except the customerID that is generated here.
 	$customer_id = "create_uniqid()";
 	$customer_first_name = $_SESSION['customer_first_name'];
 	$customer_last_name = $_SESSION['customer_last_name'];
-	$customer_adress = $_SESSION['customer_adress'];
+	$customer_address = $_SESSION['customer_address'];
 	$customer_zipcode = $_SESSION['customer_zipcode'];
 	$customer_city = $_SESSION['customer_city'];
 	$customer_country = $_SESSION['customer_country'];
@@ -34,16 +33,14 @@ function payment_complete(){
 	$booking_id;
 	
 	// fligth data
-	$flitght_reservation_id = "create_uniqid()";
+	$flight_reservation_id = "create_uniqid()";
 	$flight_seat = $_SESSION['flight_seat'];
 	$flight_price = $_SESSION['flight_Price'];
-	$flight_departure_time = $_SESSION['flight_departure_time'];
-	$flight_arrival_time = $_SESSION['flight_arrival_time'];
 	$fligth_id = $_SESSION['fligth_id'];
 	$booking_id;
 		
-	$sql_customer = "INSERT INTO customer (customer_id, first_name, last_name, adress, zipcode, city, country, phonenumber)
-					VALUES	($customer_id, $customer_first_name, $customer_last_name, $customer_adress, $customer_zipcode, $customer_city, $customer_phonenumer)";
+	$sql_customer = "INSERT INTO customer (customer_id, first_name, last_name, address, zipcode, city, country, phonenumber)
+					VALUES	('$customer_id', '$customer_first_name', '$customer_last_name', '$customer_address', '$customer_zipcode', '$customer_city', $customer_phonenumer)";
 	
 	$sql_booking = "INSERT INTO booking (booking_id, city, date_of_arrival, date_of_departure, customer_id, room_id)
 					VALUES ($booking_id, $booking_city, $booking_arrivalDate, $booking_departureDate, $customer_id, $roomID)";

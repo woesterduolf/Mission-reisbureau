@@ -8,14 +8,22 @@
 	session_start();
 	
 	$validationErrors = array();
-
-	if (!empty($_POST)) {
+	
+	$_SESSION['customer_first_name'] = "";
+	$_SESSION['customer_address'] = "";
+	$_SESSION['customer_zipcode'] = "";
+	$_SESSION['customer_city'] = "";
+	$_SESSION['customer_phonenumber'] = "";
+	$_SESSION['customer_country']  = "";
+	
+	
+	IF (!empty($_POST)) {
 		//check filled in customerdata and add validated userdata to session
-		!empty($_POST['firstname']) && validate_text($_POST['firstname']) && strlen($_POST['firstname']) <= 50 ? $_SESSION['customer_firstname'] = $_POST['firstname'] : $validationErrors[] = errormessages('firstname');
+		!empty($_POST['firstname']) && validate_text($_POST['firstname']) && strlen($_POST['firstname']) <= 50 ? $_SESSION['customer_first_name'] = $_POST['firstname'] : $validationErrors[] = errormessages('firstname');
 
-		!empty($_POST['lastname']) && validate_text($_POST['lastname']) && strlen($_POST['lastname']) <= 100 ? $_SESSION['customer_lastname'] = $_POST['lastname'] : $validationErrors[] = errormessages('lastname');
+		!empty($_POST['lastname']) && validate_text($_POST['lastname']) && strlen($_POST['lastname']) <= 100 ? $_SESSION['customer_last_name'] = $_POST['lastname'] : $validationErrors[] = errormessages('lastname');
 
-		!empty($_POST['phone']) && validate_phone($_POST['phone']) ? $_SESSION['customer_phone'] = $_POST['phone'] : $validationErrors[] = errormessages('phone');
+		!empty($_POST['phone']) && validate_phone($_POST['phone']) ? $_SESSION['customer_phonenumber'] = $_POST['phone'] : $validationErrors[] = errormessages('phone');
 
 		!empty($_POST['address']) && validate_text($_POST['address']) && strlen($_POST['address']) <= 100 ? $_SESSION['customer_address'] = $_POST['address'] : $validationErrors[] = errormessages('address');
 
@@ -74,7 +82,7 @@
 	//get customerdata from the sessions
 	$firstname = $_SESSION['customer_first_name'];
 	$lastname = $_SESSION['customer_last_name'];
-	$phone = $_SESSION['customer_phone'];
+	$phone = $_SESSION['customer_phonenumber'];
 	$address = $_SESSION['customer_address'];
 	$zipcode = $_SESSION['customer_zipcode'];
 	$customer_city = $_SESSION['customer_city'];
