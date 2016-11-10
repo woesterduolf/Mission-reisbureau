@@ -2,9 +2,9 @@
 
 function payment_complete(){
 	
-	include '../db/connection.php';
-	include '../helpers/functions.php';
-	include '../helpers/create_uniqid.php';
+	include_once '../db/connection.php';
+	include_once '../helpers/functions.php';
+	include_once '../helpers/create_uniqid.php';
 	session_start();
 	
 	//customer data everything comes from the session except the customerID that is generated here.

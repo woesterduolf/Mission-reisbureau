@@ -1,8 +1,8 @@
 <?php 
 	//inludes for the page...
-	include '../db/connection.php';
-	include '../helpers/functions.php';
-	include '../helpers/errors.php';
+	include_once '../db/connection.php';
+	include_once '../helpers/functions.php';
+	include_once '../helpers/errors.php';
 	
 	//starting the session
 	session_start();
