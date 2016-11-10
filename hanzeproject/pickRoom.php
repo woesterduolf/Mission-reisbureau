@@ -1,7 +1,8 @@
 <?php 
 	require 'db/connection.php';
 	session_start();
-	
+	$_SESSION['hotelid'] = '2';
+	$_SESSION['transport'] = 'flightPage';
 	if(!isset($_SESSION['hotelid']) || !isset($_SESSION['transport'])){
 		header("refresh:0;url=hotels.php");
 	}
@@ -56,7 +57,7 @@
 							<div class="col-sm-3">
 								<h4><?php if(isset($hotelName)){echo $hotelName;}else{echo "This hotel does not exist.";}; ?><!--insert hotel name--></h4>
 								<!--image of the hotel(now it is the logo)-->
-								<img class="img-responsive" src="images/hotels/<?php echo str_replace(" ", "", strtolower($hotelName)); ?>.jpg">
+								<img class="img-responsive" src="images/hotels/<?php echo str_replace(" ", "", strtolower($hotelName)); ?>">
 								<h4>Facilities:</h4>
 								<ul>
 									<?php
@@ -88,7 +89,7 @@
 									$result = mysqli_query($db, $query) or die('Error querying from database.');
 									if (mysqli_num_rows($result)>0){
 										while($row = mysqli_fetch_assoc($result)) {
-											$roomType = $row["type"];
+											$roomType = $row["room_id"];
 											
 											echo 
 												"<div class=\"container-fluid\" style=\"border:solid 1px black; border-radius:2px;\">
@@ -99,7 +100,7 @@
 															"<p>Price: ".$row["price"]. "</p>".
 														"</div>
 														<div class=\"col-sm-6\">
-															<img class=\"img-responsive\" src=\"images/rooms/" .strtolower($row["type"]).".jpg" . "\">
+															<img class=\"img-responsive\" src=\"images/rooms/" .strtolower($row["type"]) . "\">
 														</div>
 														<div class=\"col-sm-3\">
 														<br />
