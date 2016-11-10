@@ -75,9 +75,13 @@ function payment_complete(){
 	}
 	
 	IF ($_SESSION['transport'] == "flightPage"){
-		$sql_flight = "INSERT INTO flight_reservation (flight_reservation_id, seat, price, booking_id, fligth_id)
-						VALUES ('$flight_reservation_id', '$flight_seat', $flight_price,  '$booking_id', '$fligth_id')";
-		mysqli_query($db, $sql_flight);
+		$sql_flight = "INSERT INTO flight_reservation (flight_reservation_id, seat, price, booking_id, flight_id)
+						VALUES ('$flight_reservation_id', '$flight_seat', $flight_price,  '$booking_id', '$flight_id')";
+		if ($db->query($sql_flight) === TRUE) {
+			echo "New record created successfully";
+		} else {
+			echo "Error: " . $sql_flight . "<br>" . $db->error;
+		}
 	}
 	
 

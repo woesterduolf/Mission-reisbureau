@@ -222,7 +222,7 @@ if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transport"])) {
 </div>
 </body>
 </html>
-<<<<<<< HEAD
+
  
 <?php
  
