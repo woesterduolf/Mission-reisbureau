@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2016 at 09:54 AM
+-- Generation Time: Nov 10, 2016 at 01:06 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -73,7 +73,7 @@ CREATE TABLE `customer` (
   `customer_id` varchar(32) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(100) NOT NULL,
-  `adress` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
   `zipcode` varchar(20) NOT NULL,
   `city` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
@@ -94,6 +94,48 @@ CREATE TABLE `facilities` (
   `private_parking` tinyint(1) NOT NULL,
   `television` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `facilities`
+--
+
+INSERT INTO `facilities` (`hotel_id`, `wifi`, `breakfast`, `swimmingpool`, `private_parking`, `television`) VALUES
+(1, 1, 1, 0, 0, 1),
+(2, 0, 1, 0, 1, 1),
+(3, 1, 1, 1, 0, 1),
+(4, 0, 0, 1, 1, 1),
+(5, 1, 1, 1, 1, 1),
+(6, 0, 1, 0, 0, 0),
+(7, 1, 0, 1, 0, 1),
+(8, 0, 1, 1, 0, 1),
+(9, 1, 1, 0, 1, 1),
+(10, 1, 1, 0, 0, 1),
+(11, 1, 0, 0, 1, 0),
+(12, 1, 0, 0, 1, 1),
+(13, 1, 0, 1, 1, 0),
+(14, 1, 0, 1, 1, 0),
+(15, 1, 1, 1, 1, 0),
+(16, 0, 1, 0, 1, 1),
+(17, 0, 1, 1, 0, 1),
+(18, 1, 1, 0, 0, 0),
+(19, 1, 1, 0, 1, 1),
+(20, 0, 1, 1, 1, 1),
+(21, 1, 0, 1, 1, 0),
+(22, 1, 1, 0, 0, 1),
+(23, 1, 0, 0, 0, 1),
+(24, 1, 1, 1, 1, 1),
+(25, 0, 1, 1, 0, 0),
+(26, 0, 1, 0, 0, 1),
+(27, 1, 0, 0, 1, 1),
+(28, 1, 1, 1, 0, 1),
+(29, 1, 0, 0, 0, 0),
+(30, 1, 1, 0, 0, 0),
+(31, 0, 0, 1, 0, 0),
+(32, 1, 0, 1, 1, 1),
+(33, 0, 1, 1, 1, 0),
+(34, 1, 1, 1, 1, 0),
+(35, 1, 0, 1, 1, 0),
+(36, 1, 1, 0, 1, 1);
 
 -- --------------------------------------------------------
 
