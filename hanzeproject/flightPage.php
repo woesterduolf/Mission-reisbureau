@@ -11,7 +11,7 @@
 		
 		header("refresh:0;url=includes/booking.php");
 	}
-	$_SESSION['booking_city'] = "Groningen";
+	
 	if (isset($_SESSION['booking_city'])){
 		$cityName = $_SESSION['booking_city'];
 	}else{
