@@ -1,6 +1,16 @@
 <?php 
 	require 'db/connection.php';
-	
+	session_start();
+	if(isset($_POST['submit'])){
+		
+		$_SESSION['flight_from'] = $_POST['pickedFlightFrom'];
+		$_SESSION['flight_to'] = $_POST['pickedFlightTo'];
+		$_SESSION['flight_id']=21235436;
+		$_SESSION['flight_Price']=9999;
+		$_SESSION['flight_seat']=321;
+		
+		header("refresh:0;url=booking.php");
+	}
 	$_SESSION['booking_city'] = "Groningen";
 	if (isset($_SESSION['booking_city'])){
 		$cityName = $_SESSION['booking_city'];
