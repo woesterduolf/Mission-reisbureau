@@ -56,7 +56,7 @@
 							<div class="col-sm-3">
 								<h4><?php if(isset($hotelName)){echo $hotelName;}else{echo "This hotel does not exist.";}; ?><!--insert hotel name--></h4>
 								<!--image of the hotel(now it is the logo)-->
-								<img class="img-responsive" src="images/hotels/<?php echo str_replace(" ", "", strtolower($hotelName)); ?>">
+								<img class="img-responsive" src="images/hotels/<?php echo str_replace(" ", "", strtolower($hotelName)); ?>.jpg">
 								<h4>Facilities:</h4>
 								<ul>
 									<?php
