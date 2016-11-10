@@ -137,13 +137,22 @@
 	//calculate room price roomprice * days
 	$days = get_daydiff($arrivalDate, $departureDate);
 	$hotelPrice = $roomPrice * $days;
-		if($transport_type = "flightPage"){
+		if($_SESSION['transport'] == "flightPage"){
         $transportationPrice = $flightPrice;
-    	}elseif($transport_type = "busPage"){
+    }elseif($_SESSION['transport'] == "busPage"){
         $transportationPrice = $busPrice;
-   	}else{
+    }else{
         $transportationPrice = 0;
-   	}
+    }
+	$totalPrice = $transportationPrice + $hotelPrice;
+
+    if($_SESSION['transport'] == "flightPage"){
+        $transportation = "Airplane";
+    }elseif($_SESSION['transport'] == "busPage"){
+        $transportation = "Bus";
+    }else{
+        $transportation = "Own transportation";
+    }
 	$totalPrice = $transportationPrice + $hotelPrice;
 ?>
 <html>
@@ -262,7 +271,7 @@
 					</tr>
 					<tr>
 						<td>Transportation</td>
-						<td><?php echo $_SESSION['transport']; ?></td>
+						<td><?php echo format_money($transportation); ?></td>
 					</tr>
 					<tr>
 						<td>Transportation cost</td>
