@@ -1,7 +1,7 @@
 <?php 
 	require 'db/connection.php';
 	session_start();
-	$_SESSION['hotelid'] = '55';
+	$_SESSION['hotelid'] = '2';
 	$_SESSION['transport'] = 'flightPage';
 	if(!isset($_SESSION['hotelid']) || !isset($_SESSION['transport'])){
 		header("refresh:0;url=hotels.php");
@@ -9,11 +9,11 @@
 	$busorflight = $_SESSION['transport'];
 	$hotel = $_SESSION['hotelid'];
 	
-	$query = ("SELECT name FROM hotel WHERE hotelID = $hotel"); 
+	$query = ("SELECT hotel_name FROM hotel WHERE hotel_id = $hotel"); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
 	if (mysqli_num_rows($result)>0){
 		while($row = mysqli_fetch_assoc($result)) {
-			$hotelName = $row["name"];
+			$hotelName = $row["hotel_name"];
 		}
 	}else{
 		//echo "0 results";
@@ -38,7 +38,7 @@
 	<body>
 		<!--topbanner spanning whole width on top of page-->
 		<center><div class="topbanner">
-			<img class="img-responsive" src="images/banner-project.jpg"/>
+			<img class="img-responsive" src="images/banner.jpg"/>
 			<br />
 		</div></center>
 		
@@ -62,12 +62,12 @@
 								<ul>
 									<?php
 									
-									$query = ("SELECT * FROM facilities WHERE HOTEL_hotelID = $hotel"); 
+									$query = ("SELECT * FROM facilities WHERE hotel_id = $hotel"); 
 									$result = mysqli_query($db, $query) or die('Error querying from database.');
 									if (mysqli_num_rows($result)>0){
 										while($row = mysqli_fetch_assoc($result)) {
 											foreach($row as $key => $value){
-												if($value == 1 ){
+												if($value == 1 && $key != 'hotel_id'){
 													echo "<li>".ucfirst(preg_replace('/(?<!\ )[A-Z]/', ' $0', $key))."</li>";
 												}
 											}
@@ -85,26 +85,26 @@
 								<br />
 								<?php
 									
-									$query = ("SELECT * FROM room WHERE Hotel_hotelID = $hotel"); 
+									$query = ("SELECT * FROM room WHERE hotel_id = $hotel"); 
 									$result = mysqli_query($db, $query) or die('Error querying from database.');
 									if (mysqli_num_rows($result)>0){
 										while($row = mysqli_fetch_assoc($result)) {
-											$roomID = $row["room_id"];
+											$roomType = $row["room_id"];
 											
 											echo 
 												"<div class=\"container-fluid\" style=\"border:solid 1px black; border-radius:2px;\">
 													<div class=\"row\">
 														<div class=\"col-sm-3\">".			
-															"<p>Roomname: " . $row["TYPE"]. "</p>".
+															"<p>Roomname: " . $row["type"]. "</p>".
 															"<p>Beds: " .$row["beds"]. "</p>".
 															"<p>Price: ".$row["price"]. "</p>".
 														"</div>
 														<div class=\"col-sm-6\">
-															<img class=\"img-responsive\" src=\"images/rooms/" .strtolower($row["TYPE"]) . "\">
+															<img class=\"img-responsive\" src=\"images/rooms/" .strtolower($row["type"]) . "\">
 														</div>
 														<div class=\"col-sm-3\">
 														<br />
-														<a href=\"{$busorflight}.php?pickedRoom=$roomID\" class=\"confirmation\"><button onClick=>Book now!</button></a>								
+														<a href=\"{$busorflight}.php?pickedRoom=$roomType\" class=\"confirmation\"><button onClick=>Book now!</button></a>								
 															<script type=\"text/javascript\">
 																	$('.confirmation').on('click', function () {
 																	return confirm('Are you sure?\\nDo you want to confirm this room and hotel?');
