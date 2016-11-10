@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2016 at 01:06 PM
+-- Generation Time: Nov 10, 2016 at 06:39 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -43,11 +43,75 @@ CREATE TABLE `account` (
 CREATE TABLE `booking` (
   `booking_id` varchar(32) NOT NULL,
   `city` varchar(100) NOT NULL,
-  `date_of_arrival` date NOT NULL,
-  `date_of_departure` date NOT NULL,
+  `date_of_arrival` varchar(100) NOT NULL,
+  `date_of_departure` varchar(100) NOT NULL,
   `customer_id` varchar(32) NOT NULL,
   `room_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`booking_id`, `city`, `date_of_arrival`, `date_of_departure`, `customer_id`, `room_id`) VALUES
+('04bb9e2b21111708b40c62d50ee55a65', 'cadiz', '2016/11/08', '2016/11/28', '2619f1eb20754638db0fc9f9219db90d', 50),
+('10fe729f79a1fd36dca5afbb8228ac94', 'cadiz', '2016/11/08', '2016/11/28', '77c28d657ef2cb845d960c53f808c4ef', 53),
+('15985015e464f5505427bb945e282762', 'athens', '2016/11/08', '2016/11/28', '1aaa6996043aa2ade9bb704730b3e747', 20),
+('209e8fd394beec909d3f00f7478a4115', 'cadiz', '2016/11/08', '2016/11/28', '826a7ef4bfeec41b1aca3b355bea6d19', 50),
+('2a227f685e058d78f8711d895da140f1', 'athens', '2016/11/08', '2016/11/28', '156ea8a77a0b1e3580febe2774ac6989', 18),
+('2bc27ade9381a78c60c80fece9f53ed6', 'athens', '2016/11/08', '2016/11/28', '617f41a50da2b53d6e79bf34728f4940', 18),
+('2bf83e0f61a3a259b5712a695636787e', 'athens', '2016/11/08', '2016/11/28', '45cadbefe8468414d45ed66f15a7dadd', 20),
+('2fa5e3efc202724b297e53544ea07191', 'chalcis', '2016/11/08', '2016/11/28', 'c35d42faf9eca51b0eb85dd5f876b529', 67),
+('3720b264f8c908a6f45152e2d9fd13e1', 'cadiz', '2016/11/08', '2016/11/28', 'cacbf06f1c930cb2c26b195ad6faf129', 50),
+('3c585cd151207a778d9870a9a3847d33', 'cadiz', '2016/11/08', '2016/11/28', '1a7c5106d102062dbd21bd4e24533fe3', 50),
+('45dbed810d860fd704bae600baf3ba6e', 'argos', '2016/11/08', '2016/11/28', 'ad707453077479612a279423cd673e7f', 25),
+('47285debddf2c71a945d89978c17f4d1', 'athens', '2016/11/08', '2016/11/28', '94ec88e53a527f8aebebdbf3ce9a6972', 18),
+('4f4258b432b68099cebb32bdcb198324', 'larnaca', '2016/11/08', '2016/11/28', 'ef74b42a5c42d950583105f1aa298242', 75),
+('509427c1e45e4cd855392a8992cb2c13', 'argos', '2016/11/08', '2016/11/28', '4bcc203a6870639a1456707892c51b87', 25),
+('5237ae4dc746c043659282cf42c38b87', 'cadiz', '2016/11/08', '2016/11/28', '897f42506afd8455ee34d922910544c4', 50),
+('5256c85f6d16021f375b4a7327f49c39', 'cadiz', '2016/11/08', '2016/11/28', 'a4d772e35e30a1538329ab7a4dab56c3', 50),
+('59c83dabc43c365384b16d154da35599', 'athens', '2016/11/08', '2016/11/28', 'e8d0d1a77332a59f7b69bec6b4c40950', 18),
+('5cdf2e9da20a1bc2842640615ac7a05a', 'napels', '2016/11/08', '2016/11/28', '211eb2ba2a58dbf8077855c711a400f9', 10),
+('5f325524192eeb1dd8e6bc388d2b7ff7', 'athens', '2016/11/08', '2016/11/28', '70654e0186ea4d09a5f98acdefe40cd0', 16),
+('6414e6c65f5a13fe5604e296d90ab44f', 'chalcis', '2016/11/08', '2016/11/28', '4dcbce417be2b2d0c39e4dac8b025dc9', 67),
+('66fbaa0ccc86086a9ba2d63201074410', 'cadiz', '2016/11/08', '2016/11/28', 'af7d2b5c1e0fea28a86b846e7e646eed', 50),
+('6818af5cddca3c16727471b9bc4c977b', 'argos', '2016/11/08', '2016/11/28', 'be8c3ac1e41c8741ffbc49dddde23892', 25),
+('69fb7c1c1e9dff30c808c158c5743bc0', 'cadiz', '2016/11/08', '2016/11/28', '114027dbd5ff6f716a607c12fa6bbede', 50),
+('6ee99e6e2a4f26be9f30d3eb1c472d08', 'athens', '2016/11/08', '2016/11/28', 'e85919bcfe63c056f19a1c1cae6c0848', 18),
+('747fd69512badd149107ce9e93927ac5', 'athens', '2016/11/08', '2016/11/28', 'b943819734f3e7ac89ef07beb3b51734', 18),
+('80101dc1f550312775ae3ae6951d3445', 'cadiz', '2016/11/08', '2016/11/28', '451ece3790083fefc43fb501d9881c08', 50),
+('806b07bb21c5f9e66aeca0dfb484868d', 'cadiz', '2016/11/08', '2016/11/28', '4726023451cb2f1fa293e67065f6438b', 53),
+('828f55e943805ded446b4b9563b56554', 'larnaca', '2016/11/08', '2016/11/28', 'd9523cb6d7583dcf956519a630517b2f', 70),
+('845bc06f5a81ccc8ab9d67ad6c3e6293', 'kutaisi', '2016/11/08', '2016/11/28', '264646b909236a41645e96dcd821661e', 80),
+('8d3f583ba5f0c4205dacfd953ebdbf10', 'athens', '2016/11/08', '2016/11/28', 'af2cf4bda944e97a2dd8fb1897237cba', 18),
+('8f7da7ce80519b9e07019b68c03480bc', 'athens', '2016/11/08', '2016/11/28', 'a9dcd3b1978668b86b13b6afc2927a43', 16),
+('93e4d0288518042c16bbec5e7f627888', 'cadiz', '2016/11/08', '2016/11/28', '05fe2c4e54f64076954150fe408a86fb', 50),
+('994fa538a800d0cd10094fcb940422ff', 'cadiz', '2016/11/08', '2016/11/28', 'c9b16a35214f12cdd3a06ba23a76fa75', 50),
+('9fd9ecade2e1b4f3fa9e1abb19f8363d', 'athens', '2016/11/08', '2016/11/28', 'e51ec19200fa7e1b25814a88dfbd9166', 16),
+('a0436cf4e8e058d0729ca9b27c2a41b6', 'chalcis', '2016/11/08', '2016/11/28', 'c63d9523175e6e1ad0f3eedf0c2fa48b', 67),
+('a3513621f9c48137e33968800b1b29ab', 'cadiz', '2016/11/08', '2016/11/28', 'cb20d94976707e8aee57761f0c777be7', 50),
+('a5f5b340462220c1295fabfee41b5d74', 'argos', '2016/11/08', '2016/11/28', 'be75018df86b60450294105ccf8c74b9', 25),
+('a73ba5f9ce5f7ed64d0c3dfc26ad5406', 'cadiz', '2016/11/08', '2016/11/28', 'd5e2f4fcc5f04819a778e7b53cacd6de', 50),
+('a99131681350a8e510d218283e7f9413', 'argos', '2016/11/08', '2016/11/28', '33090f6068fdcd2e07a5abe8267489cc', 25),
+('acbb9a7497a0d03c064e98933ad5c2a2', 'athens', '2016/11/08', '2016/11/28', '623f0239812aa2e563b66410102464b9', 18),
+('af6177a2ca7bb6dde59d3717bab0cf35', 'cadiz', '2016/11/08', '2016/11/28', '06d33cc7853967583b6ec160bad9adb3', 50),
+('b27dc923cb7a38b993f1f14f05b61cb4', 'cadiz', '2016/11/08', '2016/11/28', '7a374cbc42fae91332b05bacef398f33', 50),
+('b3da69704a0cd221a19f3174b2406243', 'athens', '2016/11/08', '2016/11/28', '3b9f05c65cbe8c4a2a6ed786f5b0a7bc', 18),
+('bb340cb31536abd4493f0d331f26cbea', 'kutaisi', '2016/11/08', '2016/11/28', '21eae75f484fb61e8204e3fa3e007121', 76),
+('c101254f441335ab30469f15c6942d6e', 'argos', '2016/11/08', '2016/11/28', 'e9573bd3f63676b1c6567492f1b9d9e8', 25),
+('c49425045b72fae385e6b3c4a2819000', 'argos', '2016/11/08', '2016/11/28', '934922a85a87ffec77740a09b8859582', 25),
+('cd9bf791f2bf242d70371a4826234fbd', 'napels', '2016/11/08', '2016/11/28', 'c9a6d1d5ce07b76aae2de159a7491fa1', 10),
+('e5704c3a4cc589b36a8bd3b8ced37f7a', 'cadiz', '2016/11/08', '2016/11/28', 'f4e0e42ae29e2b56c26b173be7d34bea', 50),
+('e7ebe461e0a67db988f0790bb3b424c5', 'athens', '2016/11/08', '2016/11/28', '144d3b7ad0178e75dcf95c12c9b97f6a', 18),
+('ea0275b8cf050c9a8d99a3fcaf4b0a7a', 'athens', '2016/11/08', '2016/11/28', 'cf37e3f6a9b5ef35ba6b00ebedf59b9a', 18),
+('ed7aab7a995f3daf293861461025f151', 'cadiz', '2016/11/08', '2016/11/28', 'fa5948c39b5a1569a150d2f56cda2b91', 50),
+('ee6394f121150a164b7d1e0aa243b76a', 'cadiz', '2016/11/08', '2016/11/28', 'ba0b4157b775bfc9c0fd5553810a2b17', 50),
+('f57f9f810cc68d108c25dcf112be84fa', 'athens', '2016/11/08', '2016/11/28', '6dfe16c7ae275ae7c995393cee0bfd74', 18),
+('f7196a15af09e78d00065a6596f10888', 'athens', '2016/11/08', '2016/11/28', 'da69fc500885772bad544f658bbb7eb2', 18),
+('fdb2a63cb45db61063e864df6d084e3e', 'athens', '2016/11/08', '2016/11/28', 'ac11539a411aef50046d21142b01952c', 18),
+('feab974b6b775458715b15be84f2bcaf', 'athens', '2016/11/08', '2016/11/28', 'a01068c4eff81209c32dafb944702a71', 18),
+('feb1a3390da48131e0420cb905995949', 'thebes', '2016/11/08', '2016/11/28', '6bc2ca4759156965ccf6ea044c8f596b', 34),
+('fefff0bf537a87d9e7ad45d57d06b801', 'athens', '2016/11/08', '2016/11/28', '2710ab9cd7065d1302e85b3baa95377b', 18);
 
 -- --------------------------------------------------------
 
@@ -63,6 +127,15 @@ CREATE TABLE `bus_reservation` (
   `booking_id` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `bus_reservation`
+--
+
+INSERT INTO `bus_reservation` (`bus_reservation_id`, `boarding_point`, `price`, `boarding_point_return`, `booking_id`) VALUES
+('1e7ad5621eee19a85fdd86870778e323', 'Amsterdam', '50', 'larnaca', '4f4258b432b68099cebb32bdcb198324'),
+('45f838c29b3c0e62bf4125c1493f5bf9', 'Groningen', '50', 'argos', '509427c1e45e4cd855392a8992cb2c13'),
+('ebff594706813a6bc5a7bce30f3ad2a1', 'Groningen', '50', 'argos', 'c49425045b72fae385e6b3c4a2819000');
+
 -- --------------------------------------------------------
 
 --
@@ -77,8 +150,72 @@ CREATE TABLE `customer` (
   `zipcode` varchar(20) NOT NULL,
   `city` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
-  `phonenumber` int(20) NOT NULL
+  `phonenumber` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `address`, `zipcode`, `city`, `country`, `phonenumber`) VALUES
+('05fe2c4e54f64076954150fe408a86fb', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('06d33cc7853967583b6ec160bad9adb3', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('114027dbd5ff6f716a607c12fa6bbede', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('144d3b7ad0178e75dcf95c12c9b97f6a', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('156ea8a77a0b1e3580febe2774ac6989', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('1a7c5106d102062dbd21bd4e24533fe3', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('1aaa6996043aa2ade9bb704730b3e747', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('211eb2ba2a58dbf8077855c711a400f9', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('21eae75f484fb61e8204e3fa3e007121', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('2619f1eb20754638db0fc9f9219db90d', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('264646b909236a41645e96dcd821661e', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('2710ab9cd7065d1302e85b3baa95377b', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('33090f6068fdcd2e07a5abe8267489cc', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('3b9f05c65cbe8c4a2a6ed786f5b0a7bc', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('451ece3790083fefc43fb501d9881c08', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('45cadbefe8468414d45ed66f15a7dadd', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('4726023451cb2f1fa293e67065f6438b', 'tobias', 'schiphorst', 'naalland 171717', '1794aa', 'Texel city', 'Nederland', '645569465'),
+('4bcc203a6870639a1456707892c51b87', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('4dcbce417be2b2d0c39e4dac8b025dc9', 'Ricardo', 'van der Heide', 'hanzeplein 11', '9742gv', 'groningen', 'Nederland', '546461'),
+('617f41a50da2b53d6e79bf34728f4940', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('623f0239812aa2e563b66410102464b9', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('6bc2ca4759156965ccf6ea044c8f596b', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('6dfe16c7ae275ae7c995393cee0bfd74', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('70654e0186ea4d09a5f98acdefe40cd0', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('77c28d657ef2cb845d960c53f808c4ef', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('7a374cbc42fae91332b05bacef398f33', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('826a7ef4bfeec41b1aca3b355bea6d19', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('897f42506afd8455ee34d922910544c4', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('934922a85a87ffec77740a09b8859582', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('94ec88e53a527f8aebebdbf3ce9a6972', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('a01068c4eff81209c32dafb944702a71', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('a4d772e35e30a1538329ab7a4dab56c3', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('a9dcd3b1978668b86b13b6afc2927a43', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('ac11539a411aef50046d21142b01952c', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('ad707453077479612a279423cd673e7f', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('af2cf4bda944e97a2dd8fb1897237cba', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('af7d2b5c1e0fea28a86b846e7e646eed', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('b943819734f3e7ac89ef07beb3b51734', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('ba0b4157b775bfc9c0fd5553810a2b17', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('be75018df86b60450294105ccf8c74b9', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('be8c3ac1e41c8741ffbc49dddde23892', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('c35d42faf9eca51b0eb85dd5f876b529', 'Ricardo', 'van der Heide', 'hanzeplein 11', '9742gv', 'groningen', 'Nederland', '546461'),
+('c63d9523175e6e1ad0f3eedf0c2fa48b', 'Ricardo', 'van der Heide', 'hanzeplein 11', '9742gv', 'groningen', 'Nederland', '546461'),
+('c9a6d1d5ce07b76aae2de159a7491fa1', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('c9b16a35214f12cdd3a06ba23a76fa75', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('cacbf06f1c930cb2c26b195ad6faf129', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('cb20d94976707e8aee57761f0c777be7', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('cf37e3f6a9b5ef35ba6b00ebedf59b9a', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('d5e2f4fcc5f04819a778e7b53cacd6de', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('d9523cb6d7583dcf956519a630517b2f', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('da69fc500885772bad544f658bbb7eb2', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('e51ec19200fa7e1b25814a88dfbd9166', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('e85919bcfe63c056f19a1c1cae6c0848', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('e8d0d1a77332a59f7b69bec6b4c40950', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('e9573bd3f63676b1c6567492f1b9d9e8', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('ef74b42a5c42d950583105f1aa298242', 'tobias', 'schiphorst', 'naalland 171717', '1794aa', 'Texel city', 'Nederland', '645569465'),
+('f4e0e42ae29e2b56c26b173be7d34bea', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('fa5948c39b5a1569a150d2f56cda2b91', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100');
 
 -- --------------------------------------------------------
 
@@ -165,6 +302,15 @@ CREATE TABLE `flight_reservation` (
   `booking_id` varchar(32) NOT NULL,
   `flight_id` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `flight_reservation`
+--
+
+INSERT INTO `flight_reservation` (`flight_reservation_id`, `seat`, `price`, `booking_id`, `flight_id`) VALUES
+('516d818567c7f2296e30002d6c715c28', '321', '9999', '2fa5e3efc202724b297e53544ea07191', '21235436'),
+('create_uniqid()', '321', '9999', '747fd69512badd149107ce9e93927ac5', '21235436'),
+('d9f7523ef158da683fa50e3d6d202d99', '321', '9999', 'a0436cf4e8e058d0729ca9b27c2a41b6', '21235436');
 
 -- --------------------------------------------------------
 
@@ -389,8 +535,7 @@ ALTER TABLE `flight`
 --
 ALTER TABLE `flight_reservation`
   ADD PRIMARY KEY (`flight_reservation_id`),
-  ADD KEY `booking_id` (`booking_id`),
-  ADD KEY `fligthid` (`flight_id`);
+  ADD KEY `booking_id` (`booking_id`);
 
 --
 -- Indexes for table `hotel`
@@ -438,8 +583,7 @@ ALTER TABLE `facilities`
 -- Constraints for table `flight_reservation`
 --
 ALTER TABLE `flight_reservation`
-  ADD CONSTRAINT `flight_reservation_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `flight_reservation_ibfk_2` FOREIGN KEY (`flight_id`) REFERENCES `flight` (`flight_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `flight_reservation_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `room`
