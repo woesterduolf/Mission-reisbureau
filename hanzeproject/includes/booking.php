@@ -80,6 +80,24 @@
 	$_SESSION['flight_Price'] = 10;
 	$_SESSION['transport_type'] = "Bus";*/
 	
+	//sander random code voor room price uit db swek dingen jwz :D
+	if(isset($_SESSION['room_id'])){
+		$somevar = $_SESSION['room_id'];
+	}else{
+		echo "error";
+		die("rip");
+	}
+	
+   	$query = ("SELECT price FROM room WHERE room_id = $somevar"); 
+	$result = mysqli_query($db, $query) or die('Error querying from database.');
+	if (mysqli_num_rows($result)>0){
+		while($row = mysqli_fetch_assoc($result)) {
+			$_SESSION['room_price']= $row['price'];
+		}
+	}else{
+		//echo "0 results";
+	}
+	
 	// Getting data from the session
 	$city = $_SESSION['booking_city'];
 	$arrivalDate = $_SESSION['booking_date_of_arrival'];
