@@ -9,7 +9,7 @@
 		$_SESSION['bus_time_to'] = $_POST['timeBusTo'];
 		$_SESSION['bus_price']=50;
 		
-		header("refresh:0;url=booking.php");
+		header("refresh:0;url=includes/booking.php");
 	}
 	
 	$_SESSION['pickedHotel'] = '5';
