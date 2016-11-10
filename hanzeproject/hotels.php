@@ -85,7 +85,20 @@ require 'includes/functions.php'; // Include functie bestand, deze is noodzakeli
       
     }); 
     </script>
-
+    <style>
+        .filterdeel{
+            height: 100%;
+            }
+        
+            .resultaten1{
+                background-color: #C4BFBF;
+                border: 1px solid black;
+                border-radius: 20px;
+                padding: 15;
+                margin: 15px;
+            }
+        
+    </style>
 
 
 </head>
@@ -140,39 +153,39 @@ require 'includes/functions.php'; // Include functie bestand, deze is noodzakeli
             <h3 class="panel-title">Rating</h3>
 
             <div class="filterblock">
-                <input id="check6" type="checkbox" name="check" value="super" class="rating">
+                <input id="check6" type="checkbox" name="check" value="100" class="rating">
                 <label for="check6"><strong>Super</strong><?php
                     $count = new functions();
-                    $count->Getrating('super');
+                    $count->Getrating('100');
                     ?></label>
             </div>
 
             <div class="filterblock">
-                <input id="check7" type="checkbox" name="check" value="goed" class="rating">
+                <input id="check7" type="checkbox" name="check" value="80" class="rating">
                 <label for="check7"><strong>Goed</strong><?php
                     $count = new functions();
-                    $count->Getrating('goed');
+                    $count->Getrating('80');
                     ?></label>
             </div>
             <div class="filterblock">
-                <input id="check8" type="checkbox" name="check" value="voldoende" class="rating">
+                <input id="check8" type="checkbox" name="check" value="60" class="rating">
                 <label for="check8"><strong>Voldoende</strong><?php
                     $count = new functions();
-                    $count->Getrating('voldoende');
+                    $count->Getrating('60');
                     ?></label>
             </div>
             <div class="filterblock">
-                <input id="check9" type="checkbox" name="check" value="nietgeweldig" class="rating">
+                <input id="check9" type="checkbox" name="check" value="40" class="rating">
                 <label for="check9"><strong>Niet geweldig</strong><?php
                     $count = new functions();
-                    $count->Getrating('nietgeweldig');
+                    $count->Getrating('40');
                     ?></label>
             </div>
             <div class="filterblock">
-                <input id="check10" type="checkbox" name="check" value="zeerslecht" class="rating">
+                <input id="check10" type="checkbox" name="check" value="20" class="rating">
                 <label for="check10"><strong>Zeer slecht</strong><?php
                     $count = new functions();
-                    $count->Getrating('zeerslecht');
+                    $count->Getrating('20');
                     ?></label>
 
             </div>
