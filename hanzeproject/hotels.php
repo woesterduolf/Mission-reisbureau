@@ -92,7 +92,7 @@ require 'includes/functions.php'; // Include functie bestand, deze is noodzakeli
 
 <body>
     <div class="banner">
-        <img src="images/banner-project.jpg">
+        <img src="images/banner.jpg">
     </div>
     <div class="col-md-3 filterdeel " >
         <div class="panel-heading">

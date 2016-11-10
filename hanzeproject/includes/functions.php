@@ -3,8 +3,9 @@
     class functions {
         // Deze functie telt hoeveel hotels er zijn met een bepaald aantal sterren
         public function Getnumber($aantalsterren) {
+            $city_name = $_SESSION['booking_city'];
             $db = new database;
-            $db->query("Select count(*) FROM hotel WHERE stars=$aantalsterren"); // De Query die het aantal bepaald
+            $db->query("Select count(*) FROM hotel WHERE stars='$aantalsterren' AND city='$city_name'"); // De Query die het aantal bepaald
             $db->execute();
             $aantal = $db->resultset();
             $db->reset();
@@ -15,8 +16,9 @@
         
           // Deze functie telt hoeveel hotels er zijn met een aangegeven rating
           public function Getrating($rating) {
+            $city_name = $_SESSION['booking_city'];
             $db = new database;
-            $db->query("Select count(*) FROM hotel WHERE rating='$rating'");
+            $db->query("Select count(*) FROM hotel WHERE rating='$rating' AND city = '$city_name'");
             $db->execute();
             $aantal = $db->resultset();
             $db->reset();
@@ -30,7 +32,7 @@
         public function Viewhotels() {
                 $city_name = $_SESSION['booking_city'];
                 $db = new database;
-                $db->query("SELECT * FROM hotel WHERE city = $city_name"); // De query voor de resultaten in database
+                $db->query("SELECT * FROM hotel WHERE city = '$city_name'"); // De query voor de resultaten in database
                 $db->execute(); // Uitvoeren query
                 $hotels = $db->resultset(); // De resultaten van deze query worden in een multiple array gezet, genaamd hotels
                 $db->reset();// De functie reset zorgt er voor dat de connectie weer leeg is.
@@ -38,11 +40,11 @@
                 // De foreach loop print alle gegevens over de hotels op de pagina
                 foreach ($hotels as $hotel) {
                     echo '<form action="" method="POST">';
-                    $hotel_id = $hotel['hotelID'];
-                    $naam = $hotel['name'];
+                    $hotel_id = $hotel['hotel_id'];
+                    $naam = $hotel['hotel_name'];
                     $sterren = $hotel['stars'];
                     $rating = $hotel["rating"];
-                    $phone = $hotel["phone_number"];
+                    $phone = $hotel["phonenumber"];
                     $adress = $hotel["adress"];
                     $contact = $hotel["contact_person"];
                     $image = str_replace(" ", "", strtolower($naam));
