@@ -1,6 +1,17 @@
 <?php 
 	require 'db/connection.php';
 	session_start();
+	if(isset($_POST['submit'])){
+		$bus_reservation_id = "create_uniqid()";
+		$_SESSION['bus_boarding_point'] = $_POST['pickedBusFrom'];
+		$_SESSION['bus_boarding_point_return'] = $_POST['pickedBusTo'];
+		$_SESSION['bus_time_from'] = $_POST['timeBusFrom'];	
+		$_SESSION['bus_time_to'] = $_POST['timeBusTo'];
+		$_SESSION['bus_price']=50;
+		
+		header("refresh:0;url=booking.php");
+	}
+	
 	$_SESSION['pickedHotel'] = '5';
 	$hotel = $_SESSION['pickedHotel'];
 	$query = ("SELECT city FROM booking "); 
