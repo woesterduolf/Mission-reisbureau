@@ -42,6 +42,8 @@
 			}
 			Header("refresh:0; URL=booking.php");
 		}
+
+
 		
 		
 		
@@ -69,9 +71,17 @@
 	$flightPrice = $_SESSION['flight_Price'];
 	$transport_type = $_SESSION['transport_type'];
 
-	$getImageUrl = "../images/cities/" . strtolower($city) . ".jpg";
-	$getHotelImageUrl = "../images/hotels/" . strtolower($hotelName) . ".jpg";
-	$standardImage = "../images/hotels/standard.jpg";
+	//get customerdata from the sessions
+	$firstname = $_SESSION['customer_firstname'];
+	$lastname = $_SESSION['customer_lastname'];
+	$phone = $_SESSION['customer_phone'];
+	$address = $_SESSION['customer_address'];
+	$zipcode = $_SESSION['customer_zipcode'];
+	$customer_city = $_SESSION['customer_city'];
+	$country = $_SESSION['customer_country'];
+
+	$getImageUrl = "../images/cities/" . str_replace(' ', '', strtolower($city)) . ".jpg";
+	$getHotelImageUrl = "../images/hotels/" . str_replace(' ', '', strtolower($hotelName)) . ".jpg";
 	
 	//calculate room price roomprice * days
 	$days = get_daydiff($arrivalDate, $departureDate);
@@ -161,7 +171,7 @@
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <div class="hovereffect">
                     <a class="thumbnail">
-                        <img class="img-responsive" src="<?php echo $standardImage; ?>" alt="" width="400" height="300">
+                        <img class="img-responsive" src="<?php echo $getHotelImageUrl; ?>" alt="" width="400" height="300">
                     </a>
                     <div class="overlay">
                         <h2><?php echo $hotelName; ?></h2>
@@ -224,36 +234,36 @@
 				<div class="col-md-8">
 					<div class="form-group">
 						<label for="mr-firstname">First name</label>
-						<input type="text" name="firstname" class="form-control" id="mr-firstname" placeholder="Tobias">
+						<input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>" id="mr-firstname" placeholder="Tobias">
 					</div>
 					<div class="form-group">
 						<label for="mr-lastname">Last name</label>
-						<input type="text" name="lastname" class="form-control" id="mr-lastname" placeholder="Schiphorst">
+						<input type="text" name="lastname" class="form-control" value="<?php echo $lastname; ?>" id="mr-lastname" placeholder="Schiphorst">
 					</div>
 					<div class="form-group">
 						<label for="mr-phone">Phonenumber</label>
-						<input type="text" name="phone" class="form-control" id="mr-phone" placeholder="065879224">
+						<input type="text" name="phone" class="form-control" value="<?php echo $phone; ?>" id="mr-phone" placeholder="065879224">
 					</div>
 					<div class="form-group">
 						<label for="mr-address">Address</label>
-						<input type="text" name="address" class="form-control" id="mr-address" placeholder="Naalrand 19">
+						<input type="text" name="address" class="form-control" value="<?php echo $address; ?>" id="mr-address" placeholder="Naalrand 19">
 					</div>
 					<div class="form-group">
 						<div class="col-md-2 mr-col-no-padding">
 							<label for="mr-zipcode">Zipcode</label>
-							<input type="text" name="zipcode" size="6" max="6" class="form-control" id="mr-zipcode" placeholder="1797AM">
+							<input type="text" name="zipcode" size="6" max="6" class="form-control" value="<?php echo $zipcode; ?>" id="mr-zipcode" placeholder="1797AM">
 						</div>
 					</div>
 					<div class="form-group">
 					 	<div class="col-md-5">
 					 		<label for="mr-city">City</label>
-							<input type="text" name="city" class="form-control" id="mr-city" placeholder="Den Hoorn">
+							<input type="text" name="city" class="form-control" value="<?php echo $customer_city ?>" id="mr-city" placeholder="Den Hoorn">
 					 	</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-5 mr-col-no-padding">
 							<label for="mr-country">Country</label>
-							<input type="text" name="country" class="form-control" id="mr-country" placeholder="The Netherlands">
+							<input type="text" name="country" class="form-control" value="<?php echo $country; ?>" id="mr-country" placeholder="The Netherlands">
 						</div>
 					</div>
 				</div>

@@ -4,6 +4,8 @@
 	session_start();
 	$_SESSION["booking_id"] = 2347;
 	$_SESSION["transporttype"] = "By bus and plane";
+
+	$error = "";
 	//check if SESSIONS have a value
 	if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transporttype"])) {
 		//get de booking_id from the session
@@ -11,15 +13,16 @@
 		$transportType = format_text($_SESSION["transporttype"]);
 
 		//make a SELECT statement for the db
-		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city AS bookingcity, room.TYPE, room.price, hotel.name, busreservation.price AS busPrice, 
-			flightreservation.price AS flightPrice, customer.first_name, customer.last_name, customer.adress, customer.zipcode, customer.city AS customercity, customer.country, customer.phonenumber 
+		$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city AS bookingcity, room.TYPE, room.price, hotel.hotel_name, bus_reservation.price AS busPrice, 
+			flight_reservation.price AS flightPrice, customer.first_name, customer.last_name, customer.adress, customer.zipcode,
+			customer.city AS customercity, customer.country, customer.phonenumber 
 		FROM booking 
-		JOIN room ON room.BOOKING_bookingID = booking.bookingID
-		JOIN hotel ON hotel.hotelID = room.HOTEL_hotelID
-		JOIN flightreservation ON flightreservation.BOOKING_bookingID = booking.bookingID 
-		JOIN busreservation ON busreservation.BOOKING_bookingID = booking.bookingID
-		JOIN customer ON booking.CUSTOMER_customer_ID = customer.customer_ID 
-		WHERE bookingID = '$id'";
+		JOIN room ON room.room_id = booking.room_id
+		JOIN hotel ON hotel.hotel_id = room.hotel_id 
+		JOIN flight_reservation ON flight_reservation.booking_id = booking.booking_id 
+		JOIN bus_reservation ON bus_reservation.booking_id = booking.booking_id
+		JOIN customer ON booking.customer_id = customer.customer_id 
+		WHERE booking.booking_id = 'id'";
 		//run de SELECT statement on the db
 		$result  = mysqli_query($db, $sql);
 
@@ -53,10 +56,10 @@
 			$totalPrice = $transportationPrice + $hotelPrice;
 		}
 		else {
-			echo "no results have been found.";
+			$error = "no results have been found.";
 		}
 	} else {
-		echo "No booking_id found";
+		$error = "No booking_id found";
 	}
 ?>
 <html>
@@ -74,6 +77,7 @@
 			<div class="col-md-12 text-center">
 				<h1>Your booking has been completed!</h1>
 				<p class="lead">Thank you for choosing Ancient Travels</p>
+				<span class="text-danger"><?php echo "- " . $error; ?></span>
 			</div>
 		</div>
 	
@@ -156,6 +160,8 @@
 				<td><?php echo format_money($totalPrice); ?></td>
 			</tr>
 		</table>
+
+		<a href="../index.php" class="btn btn-default">Back to index</a>
 	</div>
 </div>
 </body>
