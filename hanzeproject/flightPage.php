@@ -9,7 +9,7 @@
 		$_SESSION['flight_Price']=9999;
 		$_SESSION['flight_seat']=321;
 		
-		header("refresh:0;url=booking.php");
+		header("refresh:0;url=includes/booking.php");
 	}
 	$_SESSION['booking_city'] = "Groningen";
 	if (isset($_SESSION['booking_city'])){
