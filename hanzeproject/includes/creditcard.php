@@ -70,7 +70,7 @@
     <header style="position: relative;">
         <div class="container-fluid">
             <div class="row">
-                <img src="../images/banner.jpg" class="img-responsive" />
+                <img src="../images/banner.jpg" class="img-responsive" width="100%" height="100%"/>
             </div>
         </div>
     </header>
