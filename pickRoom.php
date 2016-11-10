@@ -89,7 +89,7 @@
 									$result = mysqli_query($db, $query) or die('Error querying from database.');
 									if (mysqli_num_rows($result)>0){
 										while($row = mysqli_fetch_assoc($result)) {
-											$roomType = $row["TYPE"];
+											$roomID = $row["room_id"];
 											
 											echo 
 												"<div class=\"container-fluid\" style=\"border:solid 1px black; border-radius:2px;\">
@@ -104,7 +104,7 @@
 														</div>
 														<div class=\"col-sm-3\">
 														<br />
-														<a href=\"{$busorflight}.php?pickedRoom=$roomType\" class=\"confirmation\"><button onClick=>Book now!</button></a>								
+														<a href=\"{$busorflight}.php?pickedRoom=$roomID\" class=\"confirmation\"><button onClick=>Book now!</button></a>								
 															<script type=\"text/javascript\">
 																	$('.confirmation').on('click', function () {
 																	return confirm('Are you sure?\\nDo you want to confirm this room and hotel?');
