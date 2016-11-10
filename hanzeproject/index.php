@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
 				<span class="menu"></span> 
 			<?php
                         //Importeer het hoofdmenu   
-                        // require 'includes/menu.php';
+                        require 'includes/menu.php';
                         
                         ?>
 			 </div>
