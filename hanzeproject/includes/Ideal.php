@@ -2,6 +2,8 @@
 
 	include '../db/connection.php';
 	include '../helpers/functions.php';
+	include '../helpers/payment_complete.php';
+	
 	session_start();
 	
 	if (empty($_SESSION['bank'])){
@@ -10,6 +12,9 @@
 	
 	$bank = $_SESSION['bank'];
 	$text = "The " .$bank. " is proccessing your payment";
+	
+	payment_complete();
+	
 ?>
 <html>
 <head>

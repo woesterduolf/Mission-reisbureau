@@ -34,12 +34,35 @@ function payment_complete(){
 	$booking_id;
 	
 	// fligth data
-	$fligth_id = "create_uniqid()";
+	$flitght_reservation_id = "create_uniqid()";
+	$flight_seat = $_SESSION['flight_seat'];
 	$flight_price = $_SESSION['flight_Price'];
 	$flight_departure_time = $_SESSION['flight_departure_time'];
 	$flight_arrival_time = $_SESSION['flight_arrival_time'];
+	$fligth_id = $_SESSION['fligth_id'];
 	$booking_id;
+		
+	$sql_customer = "INSERT INTO customer (customer_id, first_name, last_name, adress, zipcode, city, country, phonenumber)
+					VALUES	($customer_id, $customer_first_name, $customer_last_name, $customer_adress, $customer_zipcode, $customer_city, $customer_phonenumer)";
 	
+	$sql_booking = "INSERT INTO booking (booking_id, city, date_of_arrival, date_of_departure, customer_id, room_id)
+					VALUES ($booking_id, $booking_city, $booking_arrivalDate, $booking_departureDate, $customer_id, $roomID)";
+	
+	mysqli_query($db, $sql_customer);
+	mysqli_query($db, $sql_booking);
+	
+	
+	
+	If ($_SESSION['transport'] == "busPage"){
+		$sql_bus = "INSERT INTO bus_reservation (bus_reservation_id, boarding_point, price, boarding_point_return, booking_id
+					VALUES ($bus_resevation_id, $bus_boarding_point, $bus_price, $bus_boarding_point_return, $booking_id)";
+		mysqli_query($db, sql_bus);
+	}
+	
+	IF ($_SESSION['transport'] == "flightPage"){
+		$sql_flight = "INSERT INTO flight_reservation (flight_reservation_id, seat, price, booking_id, fligth_id)
+						VALUES ($flight_reservation_id, $flight_seat, $flight_price,  $booking_id, $fligth_id)";
+	}
 	
 	
 }	
