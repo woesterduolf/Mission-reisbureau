@@ -137,7 +137,13 @@
 	//calculate room price roomprice * days
 	$days = get_daydiff($arrivalDate, $departureDate);
 	$hotelPrice = $roomPrice * $days;
-	$transportationPrice = total_transportcost($busPrice, $flightPrice);
+		if($transport_type = "flightPage"){
+        $transportationPrice = $flightPrice;
+    	}elseif($transport_type = "busPage"){
+        $transportationPrice = $busPrice;
+   	}else{
+        $transportationPrice = 0;
+   	}
 	$totalPrice = $transportationPrice + $hotelPrice;
 ?>
 <html>
