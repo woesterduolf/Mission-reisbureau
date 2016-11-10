@@ -53,20 +53,6 @@ function payment_complete(){
 	/*mysqli_query($db, $sql_customer);
 	mysqli_query($db, $sql_booking);*/
 	
-	
-	
-	If ($_SESSION['transport'] == "busPage"){
-		$sql_bus = "INSERT INTO bus_reservation (bus_reservation_id, boarding_point, price, boarding_point_return, booking_id
-					VALUES ('$bus_resevation_id', '$bus_boarding_point', $bus_price, '$bus_boarding_point_return', '$booking_id')";
-		mysqli_query($db, $sql_bus);
-	}
-	
-	IF ($_SESSION['transport'] == "flightPage"){
-		$sql_flight = "INSERT INTO flight_reservation (flight_reservation_id, seat, price, booking_id, fligth_id)
-						VALUES ('$flight_reservation_id', '$flight_seat', $flight_price,  '$booking_id', '$fligth_id')";
-		mysqli_query($db, $sql_flight);
-	}
-	
 	if ($db->query($sql_customer) === TRUE) {
 		echo "New record created successfully";
 	} else {
@@ -77,6 +63,24 @@ function payment_complete(){
 	} else {
 		echo "Error: " . $sql_booking. "<br>" . $db->error;
 	}
+	
+	If ($_SESSION['transport'] == "busPage"){
+		$sql_bus = "INSERT INTO bus_reservation (bus_reservation_id, boarding_point, price, boarding_point_return, booking_id)
+					VALUES ('$bus_resevation_id', '$bus_boarding_point', $bus_price, '$bus_boarding_point_return', '$booking_id')";
+		if ($db->query($sql_bus) === TRUE) {
+			echo "New record created successfully";
+		} else {
+			echo "Error: " . $sql_bus . "<br>" . $db->error;
+		}
+	}
+	
+	IF ($_SESSION['transport'] == "flightPage"){
+		$sql_flight = "INSERT INTO flight_reservation (flight_reservation_id, seat, price, booking_id, fligth_id)
+						VALUES ('$flight_reservation_id', '$flight_seat', $flight_price,  '$booking_id', '$fligth_id')";
+		mysqli_query($db, $sql_flight);
+	}
+	
+
 	
 	mysqli_close($db);
 }	

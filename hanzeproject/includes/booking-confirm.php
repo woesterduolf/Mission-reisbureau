@@ -26,7 +26,7 @@ if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transport"])) {
         			JOIN hotel ON hotel.hotel_id = room.hotel_id
 					JOIN bus_reservation ON bus_reservation.booking_id = booking.booking_id
 					JOIN customer ON booking.customer_id = customer.customer_id
-					WHERE booking_id = '$id'";
+					WHERE booking.booking_id = '$id'";
 			
 		break;
 		
@@ -40,7 +40,7 @@ if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transport"])) {
 			JOIN hotel ON hotel.hotel_id = room.hotel_id
 			JOIN flight_reservation ON flight_reservation.booking_id = booking.booking_id
 			JOIN customer ON booking.customer_id = customer.customer_id
-			WHERE booking_id = '$id'";
+			WHERE booking.booking_id = '$id'";
 		
 		break;
 		
@@ -52,7 +52,7 @@ if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transport"])) {
 			JOIN room ON room.room_id = booking.room_id
 			JOIN hotel ON hotel.hotel_id = room.hotel_id
 			JOIN customer ON booking.customer_id = customer.customer_id
-			WHERE booking_id = '$id'";
+			WHERE booking.booking_id = '$id'";
 			
 			
 			
@@ -80,7 +80,7 @@ if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transport"])) {
 
 		$hotelName = format_text($row["hotel_name"]);
 		$roomType = format_text($row["TYPE"]);
-		$roomPrice = format_decimal($row["price"]);
+		$roomPrice = $row["price"];
 		
 		//calculate room price roomprice * days
 		$days = get_daydiff($arrivalDate, $departureDate);
