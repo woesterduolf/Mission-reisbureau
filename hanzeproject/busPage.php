@@ -12,7 +12,7 @@
 		header("refresh:0;url=includes/booking.php");
 	}
 	
-	$_SESSION['pickedHotel'] = '5';
+	
 	$hotel = $_SESSION['pickedHotel'];
 	$query = ("SELECT city FROM booking "); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
