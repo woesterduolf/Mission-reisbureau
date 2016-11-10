@@ -262,7 +262,7 @@
 					</tr>
 					<tr>
 						<td>Transportation</td>
-						<td><?php echo $transport_type ?></td>
+						<td><?php echo $_SESSION['transport']; ?></td>
 					</tr>
 					<tr>
 						<td>Transportation cost</td>
