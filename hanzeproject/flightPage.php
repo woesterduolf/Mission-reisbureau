@@ -11,7 +11,11 @@
 		
 		header("refresh:0;url=includes/booking.php");
 	}
-	
+	if(isset($_GET['pickedRoom'])){
+		$_SESSION['room_id'] = $_GET['pickedRoom'];
+	}else{
+		header("refresh:0;url=pickRoom.php");
+	}
 	if (isset($_SESSION['booking_city'])){
 		$cityName = $_SESSION['booking_city'];
 	}else{
@@ -31,7 +35,6 @@
 	
 	//get date for site rows and data for every flight
 	
-	print_r($_POST);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
