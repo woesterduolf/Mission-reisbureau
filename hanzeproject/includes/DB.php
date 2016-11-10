@@ -3,7 +3,7 @@
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "");
-define("DB_NAME", "project");
+define("DB_NAME", "mission-reisbureau");
 
 /*
  * Een class wordt aangemaakt waarin verschillende functies m.b.t de database in kunnen worden aangeroepen
