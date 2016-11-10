@@ -17,6 +17,22 @@
 	$_SESSION['customer_phonenumber'] = "";
 	$_SESSION['customer_country']  = "";
 	
+	$hotel_id = $_SESSION['hotelid'];
+	
+	
+	$sql = "SELECT hotel_name
+			FROM hotel
+			where hotel_id = '$hotel_id'";
+	
+	$result = mysqli_query($db, $sql);
+	
+	$row = mysqli_fetch_assoc($result);
+	
+	$_SESSION['hotel_name'] = $row['hotel_name'];
+	
+	
+	mysqli_close($db);
+	
 	
 	IF (!empty($_POST)) {
 		//check filled in customerdata and add validated userdata to session
@@ -54,7 +70,7 @@
 	}
 	
 	// filling the session with testdata
-	$_SESSION['booking_city'] = "Athens";
+	/*$_SESSION['booking_city'] = "Athens";
 	$_SESSION['booking_date_of_arrival'] = "2016-11-08";
 	$_SESSION['booking_date_of_departure'] = "2016-11-28";
 	$_SESSION['hotel_name'] = "Het zoentje";
@@ -62,7 +78,7 @@
 	$_SESSION['room_price'] = 500;
 	$_SESSION['bus_price'] = 20;
 	$_SESSION['flight_Price'] = 10;
-	$_SESSION['transport_type'] = "Bus";
+	$_SESSION['transport_type'] = "Bus";*/
 	
 	// Getting data from the session
 	$city = $_SESSION['booking_city'];
