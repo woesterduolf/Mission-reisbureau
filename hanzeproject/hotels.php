@@ -6,7 +6,7 @@ if(!isset($_GET['city'])){
 else{$_SESSION['booking_city'] = $_GET['city'];
 }
 require 'includes/DB.php'; // Include DB bestand, deze is noodzakelijk voor het functioneren van de website
-require 'includes/functions.php'; // Include functie bestand, deze is noodzakelijk voor het functioneren van de website
+require 'helpers/functions.php'; // Include functie bestand, deze is noodzakelijk voor het functioneren van de website
 
 //Controleer of er op de knop is gedrukt om een hotel te kiezen
  if (isset($_POST['hotelkeuze'])) {
