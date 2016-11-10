@@ -72,8 +72,8 @@
 	$transport_type = $_SESSION['transport_type'];
 
 	//get customerdata from the sessions
-	$firstname = $_SESSION['customer_firstname'];
-	$lastname = $_SESSION['customer_lastname'];
+	$firstname = $_SESSION['customer_first_name'];
+	$lastname = $_SESSION['customer_last_name'];
 	$phone = $_SESSION['customer_phone'];
 	$address = $_SESSION['customer_address'];
 	$zipcode = $_SESSION['customer_zipcode'];
