@@ -99,7 +99,7 @@
 															"<p>Price: ".$row["price"]. "</p>".
 														"</div>
 														<div class=\"col-sm-6\">
-															<img class=\"img-responsive\" src=\"images/rooms/" .strtolower($row["type"]) . "\">
+															<img class=\"img-responsive\" src=\"images/rooms/" .strtolower($row["type"]).".jpg" . "\">
 														</div>
 														<div class=\"col-sm-3\">
 														<br />
