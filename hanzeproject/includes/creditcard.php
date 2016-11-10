@@ -4,6 +4,8 @@
 	include_once '../helpers/functions.php';
 	include_once '../helpers/errors.php';
 	include_once '../helpers/payment_complete.php';
+	
+	session_start();
 
 	//12 char
 

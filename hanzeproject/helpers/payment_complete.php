@@ -36,7 +36,7 @@ function payment_complete(){
 	$flight_reservation_id = "create_uniqid()";
 	$flight_seat = $_SESSION['flight_seat'];
 	$flight_price = $_SESSION['flight_Price'];
-	$fligth_id = $_SESSION['fligth_id'];
+	$flight_id = $_SESSION['flight_id'];
 	$booking_id;
 		
 	$sql_customer = "INSERT INTO customer (customer_id, first_name, last_name, address, zipcode, city, country, phonenumber)
