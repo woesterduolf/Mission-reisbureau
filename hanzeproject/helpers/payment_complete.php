@@ -35,7 +35,7 @@ function payment_complete(){
 	}
 	// fligth data
 	IF ($_SESSION['transport'] == "flightPage"){
-		$flight_reservation_id = "create_uniqid()";
+		$flight_reservation_id = create_uniqid();
 		$flight_seat = $_SESSION['flight_seat'];
 		$flight_price = $_SESSION['flight_Price'];
 		$flight_id = $_SESSION['flight_id'];
