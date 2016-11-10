@@ -5,6 +5,12 @@
 	$hotel = $_SESSION['pickedHotel'];
 	$query = ("SELECT city FROM booking "); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
+	
+	if(!isset($_GET['pickedRoom'])){
+		header("refresh:0;url=index.php");
+	}else{
+		$_SESSION['roomType'] = $_GET['pickedRoom'];
+	}
 	if (mysqli_num_rows($result)>0){
 		while($row = mysqli_fetch_assoc($result)) {
 			$cityName = $row["city"];
@@ -58,7 +64,7 @@
 								<div class="col-sm-5">
 									<br />
 									<p>Please pick a boarding point for your bustrip and pick a time.</p>
-									<form action="" method="post" id="busPageForm">
+									<form action="booking.php" method="post" id="busPageForm">
 										<input type="radio" name="pickedBusFrom" value="Groningen" checked=""/>Groningen <br />
 										<input type="radio" name="pickedBusFrom" value="Nijmegen"/>Nijmegen <br />
 										<input type="radio" name="pickedBusFrom" value="Utrecht" />Utrecht <br />

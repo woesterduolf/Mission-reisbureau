@@ -10,6 +10,12 @@
 	}else{
 		echo "0 results";
 	}
+	if(!isset($_GET['pickedRoom'])){
+		header("refresh:0;url=index.php");
+	}else{
+		$_SESSION['roomType'] = $_GET['pickedRoom'];
+	}
+	
 	function randTime(){
 		$num = rand(0,23);
 		$num2 = rand(0,59);
@@ -37,6 +43,7 @@
 		echo "0 results";
 	}
 	print_r($_POST);
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
@@ -83,7 +90,7 @@
 										<tr><td></td></tr>
 										<tr>
 											<td>
-												<form action="" method="post">
+												<form action="booking.php" method="post">
 													<input type="radio" name="pickedFlightFrom" value="<?php echo $arrayData[0][2]; ?>" checked=""/>	
 											</td>
 											<td>

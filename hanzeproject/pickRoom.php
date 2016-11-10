@@ -1,11 +1,14 @@
 <?php 
 	require 'db/connection.php';
 	session_start();
-	$_SESSION['hotelid'] = '74';
-	if(!isset($_SESSION['hotelid'])){
+	$_SESSION['hotelid'] = '55';
+	$_SESSION['transport'] = 'flightPage';
+	if(!isset($_SESSION['hotelid']) || !isset($_SESSION['transport'])){
 		header("refresh:0;url=hotels.php");
 	}
+	$busorflight = $_SESSION['transport'];
 	$hotel = $_SESSION['hotelid'];
+	
 	$query = ("SELECT name FROM hotel WHERE hotelID = $hotel"); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
 	if (mysqli_num_rows($result)>0){
@@ -15,6 +18,7 @@
 	}else{
 		//echo "0 results";
 	}
+	
 	
 	
 ?>
@@ -85,7 +89,8 @@
 									$result = mysqli_query($db, $query) or die('Error querying from database.');
 									if (mysqli_num_rows($result)>0){
 										while($row = mysqli_fetch_assoc($result)) {
-											$roomType = $row["TYPE"];	
+											$roomType = $row["TYPE"];
+											
 											echo 
 												"<div class=\"container-fluid\" style=\"border:solid 1px black; border-radius:2px;\">
 													<div class=\"row\">
@@ -99,20 +104,21 @@
 														</div>
 														<div class=\"col-sm-3\">
 														<br />
-														<a href=\"index.php\" class=\"confirmation\"><button>Book now!</button></a>								
+														<a href=\"{$busorflight}.php?pickedRoom=$roomType\" class=\"confirmation\"><button onClick=>Book now!</button></a>								
 															<script type=\"text/javascript\">
-																$('.confirmation').on('click', function () {
+																	$('.confirmation').on('click', function () {
 																	return confirm('Are you sure?\\nDo you want to confirm this room and hotel?');
 																});
 															</script>
 														</div>
 													</div>
-												</div><br />";						
+												</div><br />";		
 										}
 									}else{
 										echo "No rooms";
 									}
 									mysqli_close($db); 
+									
 								?>
 							</div>
 						</div>
