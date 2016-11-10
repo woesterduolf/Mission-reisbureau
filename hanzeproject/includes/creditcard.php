@@ -7,9 +7,6 @@
 	
 	session_start();
 
-	//12 char
-
-
 	//fill form after $_POST
 	$cardholder = $cardnumber = $expiredate = $cvvcode = "";
 	$validationErrors = array();
@@ -31,7 +28,7 @@
 		//check if there are error if not start insert into db and redirect to booking confirm page.
 		if (empty($validationErrors)) {
 			payment_complete();
-			Header("refresh:2; URL=booking-confirm.php");
+			Header("refresh:0; URL=booking-confirm.php");
 			exit();
 		}
 

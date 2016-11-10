@@ -51,11 +51,6 @@
 			}
 			Header("refresh:0; URL=booking.php");
 		}
-
-
-		
-		
-		
 	}
 	
 	// filling the session with testdata
