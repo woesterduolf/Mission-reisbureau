@@ -271,7 +271,7 @@
 					</tr>
 					<tr>
 						<td>Transportation</td>
-						<td><?php echo format_money($transportation); ?></td>
+						<td><?php echo $transportation; ?></td>
 					</tr>
 					<tr>
 						<td>Transportation cost</td>
