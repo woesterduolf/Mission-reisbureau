@@ -29,9 +29,12 @@
 	}else{
 		header("refresh:0;url=index.php");
 	}
+	if(isset($_GET['pickedRoom'])){
+		$_SESSION['room_id'] = $_GET['pickedRoom'];
+	}else{
+		header("refresh:0;url=pickRoom.php");
+	}
 	
-	
-	print_r($_POST);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
