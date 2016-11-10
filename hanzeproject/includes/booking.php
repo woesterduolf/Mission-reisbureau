@@ -80,6 +80,37 @@
 	$_SESSION['flight_Price'] = 10;
 	$_SESSION['transport_type'] = "Bus";*/
 	
+	//sander random code voor room price uit db swek dingen jwz :D
+	$dbhost = "localhost"; 
+	$dbuser = "root"; 
+	$dbpass = ""; 
+	$dbname = "mission-reisbureau"; 
+	$db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+	
+	// Test of de verbinding werkt! 
+	if (mysqli_connect_errno()) {
+		die("Error in connection: " .
+			mysqli_connect_error() .
+			" (" . mysqli_connect_errno() . ")"
+		);
+	} 
+	if(isset($_SESSION['room_id'])){
+		$somevar = $_SESSION['room_id'];
+	}else{
+		echo "error";
+		die("rip");
+	}
+	
+   	$query = ("SELECT price FROM room WHERE room_id = $somevar"); 
+	$result = mysqli_query($db, $query) or die('Error querying from database.');
+	if (mysqli_num_rows($result)>0){
+		while($row = mysqli_fetch_assoc($result)) {
+			$_SESSION['room_price']= $row['price'];
+		}
+	}else{
+		//echo "0 results";
+	}
+	
 	// Getting data from the session
 	$city = $_SESSION['booking_city'];
 	$arrivalDate = $_SESSION['booking_date_of_arrival'];
@@ -89,7 +120,7 @@
 	$roomPrice = $_SESSION['room_price'];
 	$busPrice = $_SESSION['bus_price'];
 	$flightPrice = $_SESSION['flight_Price'];
-	$transport_type = $_SESSION['transport_type'];
+	$transport_type = $_SESSION['transport'];
 
 	//get customerdata from the sessions
 	$firstname = $_SESSION['customer_first_name'];
