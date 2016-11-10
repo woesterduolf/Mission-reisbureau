@@ -11,6 +11,15 @@
 	<link href="../css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
+    <header style="position: relative;">
+        <div class="container-fluid">
+            <div class="row">
+                <img src="../images/banner.jpg" class="img-responsive" />
+            </div>
+        </div>
+    </header>
+
 	<div class="container">
 
 		<div class="row text-center">

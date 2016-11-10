@@ -109,6 +109,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+    <header style="position: relative; top: -70px;">
+        <div class="container-fluid">
+            <div class="row">
+                <img src="../images/banner.jpg" class="img-responsive">
+            </div>
+        </div>
+    </header>
+
 <div class="container-fluid">
 	<div class="container">
 		<div class="row">
