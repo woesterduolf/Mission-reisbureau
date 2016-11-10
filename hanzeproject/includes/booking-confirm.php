@@ -7,22 +7,57 @@ $_SESSION["transporttype"] = "eigen vervoer";
 
 $error = "";
 //check if SESSIONS have a value
-if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transporttype"])) {
+if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transport"])) {
 	//get de booking_id from the session
 	$id = $_SESSION["booking_id"];
-	$transportType = format_text($_SESSION["transporttype"]);
+	$transportType = format_text($_SESSION["transport"]);
 
 	//make a SELECT statement for the db
-	$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city AS bookingcity, room.TYPE, room.price, hotel.hotel_name, bus_reservation.price AS busPrice,
-            flight_reservation.price AS flightPrice, customer.first_name, customer.last_name, customer.address, customer.zipcode,
+	
+	switch ($_SESSION['transport']){
+	
+		case "busPage":
+			
+			$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city AS bookingcity, room.TYPE, room.price, hotel.hotel_name, bus_reservation.price AS busPrice, 
+			customer.first_name, customer.last_name, customer.address, customer.zipcode,
             customer.city AS customercity, customer.country, customer.phonenumber
-        FROM booking
-        JOIN room ON room.room_id = booking.room_id
-        JOIN hotel ON hotel.hotel_id = room.hotel_id
-        JOIN flight_reservation ON flight_reservation.booking_id = booking.booking_id
-        JOIN bus_reservation ON bus_reservation.booking_id = booking.booking_id
-        JOIN customer ON booking.customer_id = customer.customer_id
-        WHERE booking.booking_id = '$id'";
+					FROM booking
+        			JOIN room ON room.room_id = booking.room_id
+        			JOIN hotel ON hotel.hotel_id = room.hotel_id
+					JOIN bus_reservation ON bus_reservation.booking_id = booking.booking_id
+					JOIN customer ON booking.customer_id = customer.customer_id
+					WHERE booking_id = '$id'";
+			
+		break;
+		
+		case "flightPage":
+			
+			$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city AS bookingcity, room.TYPE, room.price, hotel.hotel_name, flight_reservation.price AS flightPrice , 
+			customer.first_name, customer.last_name, customer.address, customer.zipcode,
+            customer.city AS customercity, customer.country, customer.phonenumber
+			FROM booking
+			JOIN room ON room.room_id = booking.room_id
+			JOIN hotel ON hotel.hotel_id = room.hotel_id
+			JOIN flight_reservation ON flight_reservation.booking_id = booking.booking_id
+			JOIN customer ON booking.customer_id = customer.customer_id
+			WHERE booking_id = '$id'";
+		
+		break;
+		
+		case "eigenVervoer":
+			$sql = "SELECT booking.date_of_arrival, booking.date_of_departure, booking.city AS bookingcity, room.TYPE, room.price, hotel.hotel_name, 
+			customer.first_name, customer.last_name, customer.address, customer.zipcode,
+			customer.city AS customercity, customer.country, customer.phonenumber
+			FROM booking
+			JOIN room ON room.room_id = booking.room_id
+			JOIN hotel ON hotel.hotel_id = room.hotel_id
+			JOIN customer ON booking.customer_id = customer.customer_id
+			WHERE booking_id = '$id'";
+			
+			
+			
+	};
+	
 	//run de SELECT statement on the db
 	$result  = mysqli_query($db, $sql);
 
@@ -37,22 +72,34 @@ if (!empty($_SESSION["booking_id"]) && !empty($_SESSION["transporttype"])) {
 		$arrivalDate = validate_date($row["date_of_arrival"]);
 		$departureDate = validate_date($row["date_of_departure"]);
 		$customerName = format_text($row["first_name"]) . " " . format_text($row["last_name"]);
-		$customerAddress = format_text($row["adress"]);
+		$customerAddress = format_text($row["address"]);
 		$customerZipcode = format_text($row["zipcode"]);
 		$customerCity = format_text($row["customercity"]);
 		$customerCountry = format_text($row["country"]);
 		$customerPhone = format_text($row["phonenumber"]);
 
-		$hotelName = format_text($row["name"]);
+		$hotelName = format_text($row["hotel_name"]);
 		$roomType = format_text($row["TYPE"]);
 		$roomPrice = format_decimal($row["price"]);
-		$busPrice = $row["busPrice"];
-		$flightPrice = $row["flightPrice"];
-		 
+		
 		//calculate room price roomprice * days
 		$days = get_daydiff($arrivalDate, $departureDate);
 		$hotelPrice = $roomPrice * $days;
-		$transportationPrice = total_transportcost($busPrice, $flightPrice);
+		
+		if ($_SESSION['transport'] == "busPage"){
+			$busPrice = $row["busPrice"];
+			$transportationPrice = $busPrice;
+		}
+		
+		if ($_SESSION['transport'] == "flightPage"){
+			$flightPrice = $row["flightPrice"];
+			$transportationPrice = $flightPrice;
+		}
+		
+		if ($_SESSION['transport'] == "eigenVervoer"){
+			$transportationPrice = 0;
+		}
+
 		$totalPrice = $transportationPrice + $hotelPrice;
 	}
 	else {
