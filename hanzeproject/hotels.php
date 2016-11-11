@@ -150,7 +150,7 @@ require 'helpers/functions.php'; // Include functie bestand, deze is noodzakelij
                     ?></label>
             </div>
             <br>
-            <h3 class="panel-title">Rating</h3>
+<!--            <h3 class="panel-title">Rating</h3>
 
             <div class="filterblock">
                 <input id="check6" type="checkbox" name="check" value="100" class="rating">
@@ -188,7 +188,7 @@ require 'helpers/functions.php'; // Include functie bestand, deze is noodzakelij
                     $count->Getrating('20');
                     ?></label>
 
-            </div>
+            </div>-->
         </div>   
     </div>
  	<div class="searchresults" class='col-md-8' >
