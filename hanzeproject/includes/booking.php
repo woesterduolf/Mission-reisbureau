@@ -101,15 +101,19 @@
 		die("rip");
 	}
 	
-   	$query = ("SELECT price FROM room WHERE room_id = $somevar"); 
+   	$query = ("SELECT  type, price
+   				FROM room 
+   				WHERE room_id = $somevar"); 
 	$result = mysqli_query($db, $query) or die('Error querying from database.');
 	if (mysqli_num_rows($result)>0){
 		while($row = mysqli_fetch_assoc($result)) {
 			$_SESSION['room_price']= $row['price'];
+			$_SESSION['room_type']= $row['type'];
 		}
 	}else{
 		//echo "0 results";
 	}
+	mysqli_close($db);
 	
 	// Getting data from the session
 	$city = $_SESSION['booking_city'];
@@ -118,8 +122,8 @@
 	$hotelName = $_SESSION['hotel_name'];
 	$roomType = $_SESSION['room_type'];
 	$roomPrice = $_SESSION['room_price'];
-	$busPrice = $_SESSION['bus_price'];
-	$flightPrice = $_SESSION['flight_Price'];
+	
+	
 	$transport_type = $_SESSION['transport'];
 
 	//get customerdata from the sessions
@@ -138,26 +142,23 @@
 	$days = get_daydiff($arrivalDate, $departureDate);
 	$hotelPrice = $roomPrice * $days;
 		if($_SESSION['transport'] == "flightPage"){
-        $transportationPrice = $flightPrice;
+		$transportationPrice = $_SESSION['flight_Price'];
         $transportation = "Airplane";
 		}
     
     	if($_SESSION['transport'] == "busPage"){
-        $transportationPrice = $busPrice;
+        $transportationPrice = $_SESSION['bus_price'];
         $transportation = "Bus";
+       
+    	}
+    	
+    	if($_SESSION['transport'] == "eigenVervoer"){
+    		$transportationPrice = 0;
+    		$transportation = "Eigen vervoer";
     	}
     	
 	$totalPrice = $transportationPrice + $hotelPrice;
 
-    if($_SESSION['transport'] == "flightPage"){
-        $transportation = "Airplane";
-	if($_SESSION['transport'] == "busPage"){
-        $transportation = "Bus";
-    }
-    if{
-        $transportation = "Own transportation";
-    }
-	$totalPrice = $transportationPrice + $hotelPrice;
 ?>
 <html>
 <head>
