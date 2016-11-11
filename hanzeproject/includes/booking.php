@@ -139,18 +139,22 @@
 	$hotelPrice = $roomPrice * $days;
 		if($_SESSION['transport'] == "flightPage"){
         $transportationPrice = $flightPrice;
-    }elseif($_SESSION['transport'] == "busPage"){
+        $transportation = "Airplane";
+		}
+    
+    	if($_SESSION['transport'] == "busPage"){
         $transportationPrice = $busPrice;
-    }else{
-        $transportationPrice = 0;
-    }
+        $transportation = "Bus";
+    	}
+    	
 	$totalPrice = $transportationPrice + $hotelPrice;
 
     if($_SESSION['transport'] == "flightPage"){
         $transportation = "Airplane";
-    }elseif($_SESSION['transport'] == "busPage"){
+	if($_SESSION['transport'] == "busPage"){
         $transportation = "Bus";
-    }else{
+    }
+    if{
         $transportation = "Own transportation";
     }
 	$totalPrice = $transportationPrice + $hotelPrice;
