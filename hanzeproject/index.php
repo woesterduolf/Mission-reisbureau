@@ -85,8 +85,10 @@ if(isset($_POST['submit'])){
 					<script src="js/jquery-ui.js"></script>
 							  <script>
 									  $(function() {
-										$( "#datepicker,#datepicker1" ).datepicker();
-									  });
+										$( "#datepicker,#datepicker1" ).datepicker({
+                                                                                        format: 'mm/dd/yyyy');
+                                                                                
+									  }});
 							  </script>
 					<!---/End-date-piker---->
 					<link type="text/css" rel="stylesheet" href="css/JFGrid.css" />
