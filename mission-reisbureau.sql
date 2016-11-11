@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2016 at 06:39 PM
+-- Generation Time: Nov 11, 2016 at 09:41 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account` (
-  `e-mail` varchar(256) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `password` varchar(128) NOT NULL,
   `is_subscribed_to_newsletter` tinyint(1) DEFAULT NULL,
   `travel_points` int(100) DEFAULT NULL,
   `customer_id` varchar(32) NOT NULL
@@ -79,6 +79,7 @@ INSERT INTO `booking` (`booking_id`, `city`, `date_of_arrival`, `date_of_departu
 ('69fb7c1c1e9dff30c808c158c5743bc0', 'cadiz', '2016/11/08', '2016/11/28', '114027dbd5ff6f716a607c12fa6bbede', 50),
 ('6ee99e6e2a4f26be9f30d3eb1c472d08', 'athens', '2016/11/08', '2016/11/28', 'e85919bcfe63c056f19a1c1cae6c0848', 18),
 ('747fd69512badd149107ce9e93927ac5', 'athens', '2016/11/08', '2016/11/28', 'b943819734f3e7ac89ef07beb3b51734', 18),
+('7e1a92bbf9cbd91c19e601f499c82be4', 'athens', '2016/11/08', '2016/11/28', '740a1b35695a59623b686c94cf8cb2cd', 17),
 ('80101dc1f550312775ae3ae6951d3445', 'cadiz', '2016/11/08', '2016/11/28', '451ece3790083fefc43fb501d9881c08', 50),
 ('806b07bb21c5f9e66aeca0dfb484868d', 'cadiz', '2016/11/08', '2016/11/28', '4726023451cb2f1fa293e67065f6438b', 53),
 ('828f55e943805ded446b4b9563b56554', 'larnaca', '2016/11/08', '2016/11/28', 'd9523cb6d7583dcf956519a630517b2f', 70),
@@ -87,6 +88,7 @@ INSERT INTO `booking` (`booking_id`, `city`, `date_of_arrival`, `date_of_departu
 ('8f7da7ce80519b9e07019b68c03480bc', 'athens', '2016/11/08', '2016/11/28', 'a9dcd3b1978668b86b13b6afc2927a43', 16),
 ('93e4d0288518042c16bbec5e7f627888', 'cadiz', '2016/11/08', '2016/11/28', '05fe2c4e54f64076954150fe408a86fb', 50),
 ('994fa538a800d0cd10094fcb940422ff', 'cadiz', '2016/11/08', '2016/11/28', 'c9b16a35214f12cdd3a06ba23a76fa75', 50),
+('9b163ba3a19c3862b433e70e1e718637', 'athens', '2016/11/08', '2016/11/28', '31ffa0ef5a06218e7577dfbe0ffda5d8', 17),
 ('9fd9ecade2e1b4f3fa9e1abb19f8363d', 'athens', '2016/11/08', '2016/11/28', 'e51ec19200fa7e1b25814a88dfbd9166', 16),
 ('a0436cf4e8e058d0729ca9b27c2a41b6', 'chalcis', '2016/11/08', '2016/11/28', 'c63d9523175e6e1ad0f3eedf0c2fa48b', 67),
 ('a3513621f9c48137e33968800b1b29ab', 'cadiz', '2016/11/08', '2016/11/28', 'cb20d94976707e8aee57761f0c777be7', 50),
@@ -170,6 +172,7 @@ INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `address`, `zi
 ('2619f1eb20754638db0fc9f9219db90d', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('264646b909236a41645e96dcd821661e', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('2710ab9cd7065d1302e85b3baa95377b', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('31ffa0ef5a06218e7577dfbe0ffda5d8', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('33090f6068fdcd2e07a5abe8267489cc', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('3b9f05c65cbe8c4a2a6ed786f5b0a7bc', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('451ece3790083fefc43fb501d9881c08', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
@@ -182,6 +185,7 @@ INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `address`, `zi
 ('6bc2ca4759156965ccf6ea044c8f596b', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('6dfe16c7ae275ae7c995393cee0bfd74', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('70654e0186ea4d09a5f98acdefe40cd0', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
+('740a1b35695a59623b686c94cf8cb2cd', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('77c28d657ef2cb845d960c53f808c4ef', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('7a374cbc42fae91332b05bacef398f33', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
 ('826a7ef4bfeec41b1aca3b355bea6d19', 'rudolf', 'klijnhout', 'plutolaan 148', '9742gv', 'groningen', 'Nederland', '641235100'),
@@ -491,8 +495,8 @@ INSERT INTO `room` (`room_id`, `beds`, `type`, `price`, `hotel_id`) VALUES
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`e-mail`),
-  ADD UNIQUE KEY `e-mail` (`e-mail`),
+  ADD PRIMARY KEY (`email`),
+  ADD UNIQUE KEY `e-mail` (`email`),
   ADD KEY `customer_id` (`customer_id`);
 
 --

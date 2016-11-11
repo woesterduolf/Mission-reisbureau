@@ -7,7 +7,7 @@
 		$_SESSION['bus_boarding_point_return'] = $_POST['pickedBusTo'];
 		$_SESSION['bus_time_from'] = $_POST['timeBusFrom'];	
 		$_SESSION['bus_time_to'] = $_POST['timeBusTo'];
-		$_SESSION['bus_price']=50;
+		$_SESSION['bus_price']=rand(30,50);
 		
 		header("refresh:0;url=includes/booking.php");
 	}

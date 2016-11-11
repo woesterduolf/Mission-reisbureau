@@ -5,9 +5,9 @@
 		
 		$_SESSION['flight_from'] = $_POST['pickedFlightFrom'];
 		$_SESSION['flight_to'] = $_POST['pickedFlightTo'];
-		$_SESSION['flight_id']=21235436;
-		$_SESSION['flight_Price']=9999;
-		$_SESSION['flight_seat']=321;
+		$_SESSION['flight_id']=rand(1,1000);
+		$_SESSION['flight_Price']= rand(60, 500);
+		$_SESSION['flight_seat']=rand(100,200);
 		
 		header("refresh:0;url=includes/booking.php");
 	}
@@ -82,53 +82,61 @@
 										<tr>
 											<td>
 												<form action="" method="post">
-													<input type="radio" name="pickedFlightFrom" value="<?php echo "Ikbenboos"; ?>" checked=""/>	
+													<input type="radio" name="pickedFlightFrom" value="<?php echo "pickedFlightFrom"; ?>" checked=""/>	
 											</td>
 											<td>
-												<p>flight: bullshit-meerbullshit</p>
+												<p>flight: KL<?php echo rand(0,200);?></p>
 											</td>
 											<td>
-												<p>date: 11-11-11</p>
+												<p>date: <?php echo $_SESSION['booking_date_of_arrival'];?></p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: ONE MILLION DOLLAR</p>
+												<p>price: <?php echo $flightTo = rand(150,300);?></p>
 											</td>
 										</tr>
 										<tr>
 											<td>
-													<input type="radio" name="pickedFlightFrom" value="<?php echo "IKBENBOOS;" ?>" />	
+													<input type="radio" name="pickedFlightFrom" value="<?php echo "pickedFlightFrom;" ?>" />	
 											</td>
 											<td>
-												<p>flight:COMPANY-NUMBER</p>
+                                                <p>
+                                                    flight: KL<?php echo rand(0,200);?>
+                                                </p>
 											</td>
 											<td>
-												<p>date: ANDERE KUTDATUM</p>
+                                                <p>
+                                                    date: <?php echo $_SESSION['booking_date_of_arrival'];?>
+                                                </p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime();  ?></p>
 											</td>	
 											<td>
-												<p>price: $1354364325</p>
+                                                <p>
+                                                    price: <?php echo $flightTo = rand(150,300);?>
+                                                </p>
 											</td>
 										</tr>
 										<tr>
 											<td>
-													<input type="radio" name="pickedFlightFrom" value="<?php echo "aaesgdf"; ?>" />	
+													<input type="radio" name="pickedFlightFrom" value="<?php echo "flightFrom"; ?>" />	
 											</td>
 											<td>
-												<p>flight: company2-42</p>
+                                                flight: KL<?php echo rand(0,200);?>
 											</td>
 											<td>
-												<p>date: 99-99-9999</p>
+                                                <p>
+                                                    date: <?php echo $_SESSION['booking_date_of_arrival'];?>
+                                                </p>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: $42525436</p>
+                                                price: <?php echo $flightTo = rand(150,300);?>
 											</td>
 										</tr>
 									</table>
@@ -144,41 +152,42 @@
 										<tr></tr>
 										<tr>
 											<td>
-													<input type="radio" name="pickedFlightTo" value="<?php echo "andnad" ?>" checked=""/>	
+													<input type="radio" name="pickedFlightTo" value="<?php echo "flightFrom" ?>" checked=""/>	
 											</td>
 											<td>
-												<p>flight: company2-number4</p>
+                                                flight: KL<?php echo rand(0,200);?>
 											</td>
 											<td>
-												<p>date: 12-12-12</p>
+                                                date: <?php echo $_SESSION['booking_date_of_departure'];?>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: $2143</p>
+                                                price: <?php echo $flightFrom = rand(150,300);?>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<input type="radio" name="pickedFlightTo" value="<?php echo "adsfaf" ?>" />	
+												<input type="radio" name="pickedFlightTo" value="<?php echo "flightTo" ?>" />	
 											</td>
 											<td>
-												<p>flight: kutcompany-kutflight</p>
+                                                flight: KL<?php echo rand(0,200);?>
 											</td>
 											<td>
-												<p>date: 12-12-19</p>
+                                                date: <?php echo $_SESSION['booking_date_of_departure'];?>
 											</td>
 											<td>
 												<p>time: <?php echo randTime(); ?></p>
 											</td>	
 											<td>
-												<p>price: $3452431</p>
+                                                price: <?php echo $flightFrom = rand(150,300);?>
 											</td>
 										</tr>
+                                        
 									</table>
 								</div>
-								<br />
+                            
 								<div style="float:right; margin-right:5%;  margin-bottom:1%;">
 										<input type="submit" name="submit" value="Send" />
 									</form>
