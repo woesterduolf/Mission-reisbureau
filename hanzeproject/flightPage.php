@@ -6,7 +6,7 @@
 		$_SESSION['flight_from'] = $_POST['pickedFlightFrom'];
 		$_SESSION['flight_to'] = $_POST['pickedFlightTo'];
 		$_SESSION['flight_id']=rand(1,1000);
-		$_SESSION['flight_Price']= $flightFrom+$flightTo;
+		$_SESSION['flight_Price']= rand(300,600);
 		$_SESSION['flight_seat']=rand(100,200);
 		
 		header("refresh:0;url=includes/booking.php");
