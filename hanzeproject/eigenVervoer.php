@@ -11,6 +11,6 @@
 	var_dump ($_SESSION['room_type']);
 	var_dump ($_SESSION['transport']);
 	echo "GODVERDOMME RICARDO NIET NOG EEN PAGINA!";
-	header("refresh:10;url=includes/booking.php");
+	header("refresh:0;url=includes/booking.php");
 ?>
 
