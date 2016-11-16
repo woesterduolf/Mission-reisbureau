@@ -1,6 +1,8 @@
 # Mission-reisbureau
 
+Alles is ook te vinden op github
 
+https://github.com/woesterduolf/Mission-reisbureau
 
 Om te instaleren:
 
