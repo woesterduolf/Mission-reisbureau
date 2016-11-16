@@ -11,3 +11,4 @@ vervolgens gebruik de hanzeproject map als om het project van te draaien en gebr
 Docs map:
 
 In de docs map staan documenten die wij hebben gebruikt tijdens het project denk hierbij aan erd's, oude database, etc.
+In de docs map zijn ook de reflectie verslagen te vinden in het mapje reflectie
