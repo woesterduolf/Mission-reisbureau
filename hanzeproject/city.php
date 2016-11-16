@@ -203,7 +203,7 @@
             <footer>
                 <div class="row">
 
-                    <p>Copyright &copy; Tobias, Henk Jan, Sander en Ricardo 2016</p>
+                    <p>Copyright &copy; Tobias, Henk-Jan, Sander, Rudolf en Ricardo 2016</p>
 
                 </div>
             </footer>
